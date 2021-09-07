@@ -1,7 +1,7 @@
 return {
   version = "1.5",
   luaversion = "5.1",
-  tiledversion = "1.7.0",
+  tiledversion = "1.7.2",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 14,
@@ -13,10 +13,9 @@ return {
   properties = {},
   tilesets = {
     {
-      name = "Buzzle Tiles 1",
+      name = "tileset1",
       firstgid = 1,
-      filename = "tileset1.tsx",
-      exportfilename = "tileset1.lua"
+      filename = "tileset1.tsx"
     }
   },
   layers = {
@@ -27,7 +26,7 @@ return {
       width = 14,
       height = 7,
       id = 1,
-      name = "tiles",
+      name = "Tile Layer 1",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -37,20 +36,20 @@ return {
       properties = {},
       encoding = "lua",
       data = {
-        57, 57, 57, 57, 57, 57, 57, 57, 57, 57, 57, 57, 57, 57,
-        57, 57, 57, 57, 57, 31, 31, 31, 57, 57, 57, 57, 57, 57,
-        57, 57, 57, 57, 57, 31, 41, 31, 57, 57, 57, 57, 57, 57,
-        57, 57, 57, 57, 57, 31, 57, 41, 57, 57, 57, 57, 57, 57,
-        57, 57, 57, 57, 57, 31, 57, 57, 57, 57, 57, 57, 57, 57,
-        57, 57, 57, 57, 57, 41, 57, 57, 57, 57, 57, 57, 57, 57,
-        57, 57, 57, 57, 57, 57, 57, 57, 57, 57, 57, 57, 57, 57
+        51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51,
+        51, 51, 51, 51, 51, 31, 31, 31, 51, 51, 51, 51, 51, 51,
+        51, 51, 51, 51, 51, 31, 41, 31, 51, 51, 51, 51, 51, 51,
+        51, 51, 51, 51, 51, 31, 51, 41, 51, 51, 51, 51, 51, 51,
+        51, 51, 51, 51, 51, 31, 51, 51, 51, 51, 51, 51, 51, 51,
+        51, 51, 51, 51, 51, 41, 51, 51, 51, 51, 51, 51, 51, 51,
+        51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51
       }
     },
     {
       type = "objectgroup",
       draworder = "topdown",
       id = 2,
-      name = "objects",
+      name = "Object Layer 1",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -62,7 +61,7 @@ return {
         {
           id = 6,
           name = "",
-          type = "player",
+          type = "",
           shape = "rectangle",
           x = 80,
           y = 80,
@@ -76,7 +75,7 @@ return {
         {
           id = 7,
           name = "",
-          type = "pudding",
+          type = "",
           shape = "rectangle",
           x = 112,
           y = 48,
