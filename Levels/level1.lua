@@ -15,7 +15,8 @@ return {
     {
       name = "Buzzle Tiles 1",
       firstgid = 1,
-      filename = "Levels/tileset1.lua"
+      filename = "tileset1.tsx",
+      exportfilename = "tileset1.lua"
     }
   },
   layers = {
@@ -26,7 +27,7 @@ return {
       width = 14,
       height = 7,
       id = 1,
-      name = "Tile Layer 1",
+      name = "tiles",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -49,7 +50,7 @@ return {
       type = "objectgroup",
       draworder = "topdown",
       id = 2,
-      name = "Object Layer 1",
+      name = "objects",
       visible = true,
       opacity = 1,
       offsetx = 0,
