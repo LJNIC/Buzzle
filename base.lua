@@ -1,5 +1,5 @@
-local Object = require "source.lib.classic"
-local flux = require "source.lib.flux"
+local Object = require "lib.classic"
+local flux = require "lib.flux"
 
 local Base = Object:extend()
 

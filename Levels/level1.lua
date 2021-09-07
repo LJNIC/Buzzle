@@ -62,7 +62,7 @@ return {
         {
           id = 6,
           name = "",
-          type = "",
+          type = "player",
           shape = "rectangle",
           x = 80,
           y = 80,
@@ -76,7 +76,7 @@ return {
         {
           id = 7,
           name = "",
-          type = "",
+          type = "pudding",
           shape = "rectangle",
           x = 112,
           y = 48,

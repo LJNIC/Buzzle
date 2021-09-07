@@ -16,7 +16,7 @@
 </data>
  </layer>
  <objectgroup id="2" name="objects">
-  <object id="6" gid="38" x="80" y="80" width="16" height="16"/>
-  <object id="7" gid="28" x="112" y="48" width="16" height="16"/>
+  <object id="6" type="player" gid="38" x="80" y="80" width="16" height="16"/>
+  <object id="7" type="pudding" gid="28" x="112" y="48" width="16" height="16"/>
  </objectgroup>
 </map>

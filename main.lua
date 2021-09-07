@@ -2,9 +2,9 @@ require("lib.batteries"):export()
 Vec2 = require "lib.vec2"
 TILE_WIDTH = 16
 
-function love.update(dt) 
-end
+local Level = require "level"
+local level = Level("Levels.level1")
 
 function love.draw()
-    love.graphics.print("Buzzle")
+    level.player:draw()
 end
