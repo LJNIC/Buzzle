@@ -5,7 +5,11 @@ local Player = Base:extend()
 
 function Player:new(x, y)
     Player.super.new(self, x, y)
-    self.tile_id = 46
+    print(x, y)
+    self.tile_id = 38
+end
+
+function Player:update(dt)
 end
 
 function Player:draw()
