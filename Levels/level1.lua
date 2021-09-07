@@ -61,7 +61,7 @@ return {
         {
           id = 6,
           name = "",
-          type = "",
+          type = "player",
           shape = "rectangle",
           x = 80,
           y = 80,

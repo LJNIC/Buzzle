@@ -1,8 +1,8 @@
 return {
   version = "1.5",
   luaversion = "5.1",
-  tiledversion = "1.7.0",
-  name = "Buzzle Tiles 1",
+  tiledversion = "1.7.2",
+  name = "tileset1",
   tilewidth = 16,
   tileheight = 16,
   spacing = 0,
@@ -24,5 +24,10 @@ return {
   properties = {},
   wangsets = {},
   tilecount = 60,
-  tiles = {}
+  tiles = {
+    {
+      id = 37,
+      type = "player"
+    }
+  }
 }
