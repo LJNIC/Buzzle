@@ -7,6 +7,8 @@ function Player:new(x, y)
     Player.super.new(self, x, y)
     print(x, y)
     self.tile_id = 38
+    self.health = 3
+    self.energy = 3
 end
 
 function Player:update(dt)

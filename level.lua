@@ -31,7 +31,7 @@ function Level:draw()
     for y = 1, self.height do
         for x = 1, self.width do
             local t = self:tile_at(x, y)
-            love.graphics.draw(Tileset.image, Tileset.tiles[t], x * TILE_WIDTH, y * TILE_WIDTH)
+            love.graphics.draw(Tileset.image, Tileset.tiles[t], (x - 1) * TILE_WIDTH, (y - 1) * TILE_WIDTH)
         end
     end
     self.player:draw()
@@ -54,7 +54,9 @@ function Level:tile_at(base_position_x, y)
         return nil
     end
 
-    return self.tiles[(y - 1) * self.width + x]
+    local index = (y - 1) * self.width + x
+
+    return self.tiles[index]
 end
 
 return Level

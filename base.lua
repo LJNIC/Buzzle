@@ -5,7 +5,7 @@ local Base = Object:extend()
 
 function Base:new(x, y)
     self.position = Vec2(x, y)
-    self.drawn_position = TILE_WIDTH * self.position
+    self.drawn_position = (TILE_WIDTH * self.position) - Vec2(TILE_WIDTH, TILE_WIDTH)
     self.moving = false
     self.alive = true
 end
