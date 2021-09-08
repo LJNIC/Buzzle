@@ -6,7 +6,7 @@ TILE_WIDTH = 16
 love.graphics.setDefaultFilter("nearest", "nearest")
 
 local Level = require "level"
-local level = Level("Levels.level1")
+local level = Level("levels.level1")
 
 function love.update(dt)
     flux.update(dt)

@@ -1,5 +1,5 @@
-local image = love.graphics.newImage("Levels/tileset1.png")
-local data = require "Levels.tileset1"
+local image = love.graphics.newImage("levels/tileset1.png")
+local data = require "levels.tileset1"
 
 local tiles = {}
 for y = 0, data.tilecount/data.columns - 1 do
