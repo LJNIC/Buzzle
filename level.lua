@@ -1,6 +1,7 @@
 local Object = require "lib.classic"
 local Tileset = require "tileset"
 local Player = require "player"
+local Deck = require "deck"
 
 local Level = Object:extend()
 Level.tile_types = { [0] = "floor", [1] = "wall", [2] = "goal", [3] = "border" }
@@ -24,6 +25,8 @@ function Level:new(filename)
             self.player = Player((object.x / TILE_WIDTH) + 1, object.y / TILE_WIDTH)
         end
     end
+
+    self.deck = Deck(level_data.properties)
 end
 
 function Level:draw()

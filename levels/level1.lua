@@ -10,7 +10,11 @@ return {
   tileheight = 16,
   nextlayerid = 3,
   nextobjectid = 13,
-  properties = {},
+  properties = {
+    ["move1"] = 1,
+    ["move2"] = 1,
+    ["move3"] = 1
+  },
   tilesets = {
     {
       name = "tileset1",
