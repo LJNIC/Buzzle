@@ -20,7 +20,7 @@ function game:draw()
     love.graphics.setBackgroundColor(29/255, 16/255, 28/255)
 
     love.graphics.push()
-        love.graphics.draw(self.level.canvas, love.graphics.getWidth()/2, love.graphics.getHeight()/2, 0, gameScale, gameScale, self.level.canvas:getWidth()/2, self.level.canvas:getWidth()/2)
+        love.graphics.draw(self.level.canvas, love.graphics.getWidth()/2, love.graphics.getHeight()/3, 0, gameScale, gameScale, self.level.canvas:getWidth()/2, self.level.canvas:getHeight()/2)
     love.graphics.pop()
     love.graphics.push()
         love.graphics.scale(interfaceScale, interfaceScale)
