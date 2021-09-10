@@ -28,4 +28,12 @@ function game:draw()
     love.graphics.pop()
 end
 
+function game:keypressed(key)
+    if key == "right" then
+        gameScale = gameScale + 1
+    elseif key == "left" then
+        gameScale = gameScale - 1
+    end
+end
+
 return game
