@@ -12,18 +12,17 @@ local cardTypes = {
 function Deck:new(cards)
     self.cards = {}
     for cardType, count in pairs(cards) do
-        table.insert(self.cards, cardTypes[cardType](count))
+        local card = cardTypes[cardType]
+        table.insert(self.cards, card:new(count))
     end
+    self.active = nil
+    self.targets = nil
 end
 
-function Deck:draw()
-    love.graphics.push()
-    love.graphics.translate(50, 116)
-    for _,card in ipairs(self.cards) do
-        card:draw()
-        love.graphics.translate(36, 0)
-    end
-    love.graphics.pop()
+function Deck:selectCard(index)
+    self.active = self.cards[index]
+    for _, card in ipairs(self.cards) do card.selected = false end
+    self.active.selected = true
 end
 
 return Deck

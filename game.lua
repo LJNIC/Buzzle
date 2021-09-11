@@ -1,32 +1,28 @@
-local Plan = require "lib.plan"
-local Rules = Plan.Rules
-local Container = Plan.Container
 local Level = require "level"
+local interface = require "interface"
 
 local game = {}
-local uiImage = love.graphics.newImage("assets/UI.png")
 local interfaceScale = 4
 local gameScale = 2
 
 function game:enter()
     self.level = Level("levels.level1")
+    interface:enterLevel(self.level)
 end
 
 function game:update(dt)
+    interface:update(dt)
 end
 
 function game:draw()
-    self.level:draw()
     love.graphics.setBackgroundColor(29/255, 16/255, 28/255)
 
-    love.graphics.push()
-        love.graphics.draw(self.level.canvas, love.graphics.getWidth()/2, love.graphics.getHeight()/3, 0, gameScale, gameScale, self.level.canvas:getWidth()/2, self.level.canvas:getHeight()/2)
-    love.graphics.pop()
-    love.graphics.push()
-        love.graphics.scale(interfaceScale, interfaceScale)
-        love.graphics.draw(uiImage)
-        self.level.deck:draw()
-    love.graphics.pop()
+    local level = self.level
+    level:draw()
+    interface:draw()
+
+    love.graphics.draw(level.canvas, love.graphics.getWidth()/2, love.graphics.getHeight()/3, 0, gameScale, gameScale, level.canvas:getWidth()/2, level.canvas:getHeight()/2)
+    love.graphics.draw(interface.canvas, 0, 0, 0, interfaceScale, interfaceScale)
 end
 
 function game:keypressed(key)
@@ -35,6 +31,10 @@ function game:keypressed(key)
     elseif key == "left" then
         gameScale = gameScale - 1
     end
+end
+
+function game:mousepressed(x, y)
+    interface:click()
 end
 
 return game
