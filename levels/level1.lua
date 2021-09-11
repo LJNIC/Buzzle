@@ -79,7 +79,7 @@ return {
         {
           id = 7,
           name = "",
-          type = "",
+          type = "pudding",
           shape = "rectangle",
           x = 112,
           y = 48,

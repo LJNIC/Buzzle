@@ -1,6 +1,7 @@
 local Object = require "lib.classic"
 local Tileset = require "tileset"
 local Player = require "player"
+local Pudding = require "pudding"
 local Deck = require "deck"
 
 local Level = Object:extend()
@@ -21,8 +22,11 @@ function Level:new(filename)
     self.tiles = tile_layer.data
 
     for _,object in ipairs(object_layer.objects) do
+        local x, y = (object.x / TILE_WIDTH) + 1, object.y / TILE_WIDTH
         if object.type == "player" then
-            self.player = Player((object.x / TILE_WIDTH) + 1, object.y / TILE_WIDTH)
+            self.player = Player(x, y)
+        elseif object.type == "pudding" then
+            self.pudding = Pudding(x, y)
         end
     end
 
@@ -37,6 +41,7 @@ function Level:draw()
             love.graphics.draw(Tileset.image, Tileset.tiles[t], (x - 1) * TILE_WIDTH, (y - 1) * TILE_WIDTH)
         end
     end
+    self.pudding:draw()
     self.player:draw()
     love.graphics.setCanvas()
 end
