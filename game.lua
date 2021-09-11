@@ -25,6 +25,7 @@ function game:draw()
     love.graphics.push()
         love.graphics.scale(interfaceScale, interfaceScale)
         love.graphics.draw(uiImage)
+        self.level.deck:draw()
     love.graphics.pop()
 end
 
