@@ -7,7 +7,7 @@ local interfaceScale = 4
 local gameScale = 2
 
 function game:enter()
-    self.level = Level("levels.level1")
+    self.level = Level("levels.level2")
     interface:enterLevel(self.level)
 end
 

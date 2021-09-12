@@ -21,11 +21,11 @@ function Deck:new(cards, player)
     self.targets = nil
 end
 
-function Deck:selectCard(index)
+function Deck:selectCard(index, level)
     self.active = self.cards[index]
     for _, card in ipairs(self.cards) do card.selected = false end
     self.active.selected = true
-    self.targets = functional.map(self.active.targets, function(v) return self.player.position + v end)
+    self.targets = self.active:validatedTargets(level)
 end
 
 function Deck:isTargeting(x, y)

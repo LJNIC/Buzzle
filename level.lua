@@ -2,6 +2,7 @@ local Object = require "lib.classic"
 local Tileset = require "tileset"
 local Player = require "player"
 local Pudding = require "pudding"
+local Squar = require "squar"
 local Deck = require "deck"
 
 local Level = Object:extend()
@@ -21,12 +22,15 @@ function Level:new(filename)
 
     self.tiles = tile_layer.data
 
+    self.objects = {}
     for _,object in ipairs(object_layer.objects) do
         local x, y = (object.x / TILE_WIDTH) + 1, object.y / TILE_WIDTH
         if object.type == "player" then
             self.player = Player(x, y)
         elseif object.type == "pudding" then
             self.pudding = Pudding(x, y)
+        elseif object.type == "squar" then
+            table.insert(self.objects, Squar(x, y))
         end
     end
 
@@ -78,9 +82,23 @@ function Level:draw()
             love.graphics.setColor(1, 1, 1)
         end
     end
+    for _,object in ipairs(self.objects) do
+        if object.alive then
+            object:draw()
+        end
+    end
     self.pudding:draw()
     self.player:draw()
     love.graphics.setCanvas()
+end
+
+function Level:isWalkable(vecOrX, y)
+    for _,object in ipairs(self.objects) do
+        if object.alive and object.position:equal(vecOrX, y) and object:is(Squar) then
+            return false
+        end
+    end
+    return self:tileAt(vecOrX, y) == 31
 end
 
 function Level:tileAt(base_position_x, y)

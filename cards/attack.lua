@@ -10,4 +10,17 @@ function Attack:new(count)
     return card
 end
 
+function Attack:use(level, position)
+    for _,object in ipairs(level.objects) do
+        if object.position == position then
+            object.alive = false
+            return
+        end
+    end
+end
+
+function Attack:validPosition(level, position)
+    return level:tileAt(position) == 31
+end
+
 return Attack

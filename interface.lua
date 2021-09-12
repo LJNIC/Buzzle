@@ -51,7 +51,7 @@ end
 function interface:click(x, y)
     for i, card in ipairs(self.deck.cards) do
         if card.hovered then
-            self.deck:selectCard(i)
+            self.deck:selectCard(i, self.level)
         end
     end
 

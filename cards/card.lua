@@ -4,7 +4,7 @@ local Container = Plan.Container
 local Object = require "lib.classic"
 
 local Card = Container:extend()
-local font = love.graphics.newFont("assets/SinsGold.ttf", 32)
+local font = love.graphics.newFont("assets/SinsGold.ttf", 16)
 
 local cardRules = Rules.new()
     :addX(Plan.pixel(0))
@@ -34,9 +34,9 @@ function Card:draw()
     end
 
     Card.super.draw(self)
-    --love.graphics.setFont(font)
-    --love.graphics.setColor(0.1, 0.1, 0.2)
-    --love.graphics.print("x" .. tostring(self.count), self.x, self.y)
+    love.graphics.setFont(font)
+    love.graphics.setColor(0.1, 0.1, 0.2)
+    love.graphics.print("x" .. tostring(self.count), self.x + 12, self.y + 46)
 end
 
 function Card:update(dt)
@@ -56,6 +56,30 @@ function Card:update(dt)
 end
 
 function Card:use(level, position)
+end
+
+function Card:validPosition(level, position)
+    return level:isWalkable(position)
+end
+
+function Card:validatedTargets(level)
+    local player = level.player.position
+    local targets = functional.map(self.targets, function(v) return player + v end)
+    local i = 1
+    return functional.filter(targets, function(target)
+        local direction = self.targets[i]:orthogonal()
+        i = i + 1
+
+        if not self:validPosition(level, target) then return false end
+
+        local checking = player + direction
+        while checking ~= target do
+            if not self:validPosition(level, checking) then return false end
+            checking:adds(direction.x, direction.y)
+        end
+
+        return true
+    end)
 end
 
 return Card

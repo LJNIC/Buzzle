@@ -11,6 +11,10 @@ function Move2:new(count)
     return card
 end
 
+function Move2:filterPosition(level, position)
+    return level:isWalkable(position)
+end
+
 function Move2:use(level, position)
     level.player:move(position)
 end

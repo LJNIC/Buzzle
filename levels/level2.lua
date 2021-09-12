@@ -1,7 +1,7 @@
 return {
   version = "1.5",
   luaversion = "5.1",
-  tiledversion = "1.7.2",
+  tiledversion = "1.7.0",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 14,
@@ -10,12 +10,18 @@ return {
   tileheight = 16,
   nextlayerid = 3,
   nextobjectid = 6,
-  properties = {},
+  properties = {
+    ["attack"] = 1,
+    ["move1"] = 1,
+    ["move2"] = 1,
+    ["move3"] = 1
+  },
   tilesets = {
     {
       name = "tileset1",
       firstgid = 1,
-      filename = "tileset1.tsx"
+      filename = "tileset1.tsx",
+      exportfilename = "tileset1.lua"
     }
   },
   layers = {
@@ -75,7 +81,7 @@ return {
         {
           id = 2,
           name = "",
-          type = "",
+          type = "pudding",
           shape = "rectangle",
           x = 64,
           y = 48,
@@ -89,7 +95,7 @@ return {
         {
           id = 3,
           name = "",
-          type = "",
+          type = "squar",
           shape = "rectangle",
           x = 96,
           y = 48,

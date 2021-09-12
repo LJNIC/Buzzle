@@ -118,8 +118,12 @@ end
 
 -- exact component equality.
 -- (vec v) -> bool
-function vec:equal(v)
-  return self.x == v.x and self.y == v.y
+function vec:equal(v_or_x, y)
+  if y then
+    return self.x == v_or_x and self.y == y
+  end
+
+  return self.x == v_or_x.x and self.y == v_or_x.y
 end
 
 -- check if a vector is nearly equal to V.
@@ -583,6 +587,12 @@ end
 -- (vec origin, vec opposite) -> vec
 function vec:mirrored(origin, opposite)
   return self:clone():mirror(origin, opposite)
+end
+
+function vec:orthogonal()
+  local x = self.x == 0 and 0 or self.x / math.abs(self.x)
+  local y = self.y == 0 and 0 or self.y / math.abs(self.y)
+  return vec(x, y)
 end
 
 -- set SELF with V.
