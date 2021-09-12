@@ -11,6 +11,7 @@ function Attack:new(count)
 end
 
 function Attack:use(level, position)
+    level.player:attack(position)
     for _,object in ipairs(level.objects) do
         if object.position == position then
             object.alive = false
