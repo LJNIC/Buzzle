@@ -32,32 +32,47 @@ function Level:new(filename)
 
     self.deck = Deck(level_data.properties, self.player)
     self.active = Vec2(-1, -1)
+    self.activeValid = false
 end
 
 function Level:update(dt, x, y)
     if x == nil or y == nil then return end
-    self.active.x = math.floor(x / TILE_WIDTH) + 1
-    self.active.y = math.floor(y / TILE_WIDTH) + 1
+    local x, y = math.floor(x / TILE_WIDTH) + 1, math.floor(y / TILE_WIDTH) + 1
+    if self:tileAt(x, y) then
+        self.active.x = x
+        self.active.y = y
+        self.activeValid = true
+    else
+        self.activeValid = false
+    end
+end
+
+function Level:isActive(x, y)
+    return self.active.x == x and self.active.y == y
 end
 
 function Level:draw()
     love.graphics.setCanvas(self.canvas)
     for y = 1, self.height do
         for x = 1, self.width do
-            local t = self:tile_at(x, y)
+            local t = self:tileAt(x, y)
             local drawX, drawY = (x - 1) * TILE_WIDTH, (y - 1) * TILE_WIDTH
 
             Tileset:drawTile(t, drawX, drawY)
-            if x == self.active.x and y == self.active.y then
-                love.graphics.setColor(1, 1, 0)
-            end
-
             if t == 31 and self.deck:isTargeting(x, y) then
-                Tileset:drawTile(17, drawX, drawY)
+                if self:isActive(x, y) then
+                    Tileset:drawTile(68, drawX, drawY)
+                else
+                    Tileset:drawTile(17, drawX, drawY)
+                end
             end
 
             if t == 41 and self.deck:isTargeting(x, y - 1) then
-                Tileset:drawTile(27, drawX, drawY)
+                if self:isActive(x, y - 1) then
+                    Tileset:drawTile(78, drawX, drawY)
+                else
+                    Tileset:drawTile(27, drawX, drawY)
+                end
             end
 
             love.graphics.setColor(1, 1, 1)
@@ -68,7 +83,7 @@ function Level:draw()
     love.graphics.setCanvas()
 end
 
-function Level:tile_at(base_position_x, y)
+function Level:tileAt(base_position_x, y)
     local x = base_position_x
     local y = y
 

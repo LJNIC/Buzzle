@@ -9,7 +9,7 @@ function Pudding:new(x, y)
 end
 
 function Pudding:draw()
-    local drawn = self.drawn_position
+    local drawn = self.drawnPosition
     love.graphics.draw(Tileset.image, Tileset.tiles[self.tile_id], drawn.x, drawn.y)
 end
 

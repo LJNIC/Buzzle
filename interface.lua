@@ -24,6 +24,8 @@ local uiImage = love.graphics.newImage("assets/UI.png")
 
 function interface:enterLevel(level)
     self.deck = level.deck
+    self.level = level
+
     local cardsRules = Rules.new()
         :addX(Plan.center())
         :addY(Plan.pixel(2))
@@ -46,11 +48,18 @@ function interface:enterLevel(level)
     root:addChild(deckContainer)
 end
 
-function interface:click()
+function interface:click(x, y)
     for i, card in ipairs(self.deck.cards) do
         if card.hovered then
             self.deck:selectCard(i)
         end
+    end
+
+    if not self.deck.targets then return end
+
+    local tile = self.level.active
+    if functional.any(self.deck.targets, function(v) return v.x == tile.x and v.y == tile.y end) then
+        self.deck:useCard(self.level, tile)
     end
 end
 

@@ -1,3 +1,4 @@
+local flux = require "lib.flux"
 local Level = require "level"
 local interface = require "interface"
 
@@ -13,6 +14,7 @@ end
 function game:update(dt)
     interface:update(dt)
     self.level:update(dt, game:getMouse())
+    flux.update(dt) 
 end
 
 function game:getMouse()

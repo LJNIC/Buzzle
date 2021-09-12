@@ -11,4 +11,8 @@ function Move3:new(count)
     return card
 end
 
+function Move3:use(level, position)
+    level.player:move(position)
+end
+
 return Move3

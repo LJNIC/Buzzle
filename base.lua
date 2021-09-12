@@ -5,7 +5,7 @@ local Base = Object:extend()
 
 function Base:new(x, y)
     self.position = Vec2(x, y)
-    self.drawn_position = (TILE_WIDTH * self.position) - Vec2(TILE_WIDTH, TILE_WIDTH)
+    self.drawnPosition = (TILE_WIDTH * self.position) - Vec2(TILE_WIDTH, TILE_WIDTH)
     self.moving = false
     self.alive = true
 end
@@ -13,16 +13,16 @@ end
 function Base:tick()
 end
 
-function Base:move(new_position)
-    if self.position == new_position then return end
+function Base:move(newPosition)
+    if self.position == newPosition then return end
 
     if self.moving then
-        self.drawn_position = self.position * TILE_WIDTH
+        self.drawnPosition = self.position * TILE_WIDTH
     end
 
-    self.position = new_position
-    local new_drawn_position = new_position * TILE_WIDTH
-    flux.to(self.drawn_position, 0.2, {x = new_drawn_position.x, y = new_drawn_position.y}):oncomplete(function() self.moving = false end)
+    self.position = newPosition
+    local newDrawn = (newPosition - Vec2(1, 1)) * TILE_WIDTH
+    flux.to(self.drawnPosition, 0.2, {x = newDrawn.x, y = newDrawn.y}):oncomplete(function() self.moving = false end)
     self.moving = true
 end
 

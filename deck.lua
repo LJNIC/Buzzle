@@ -33,4 +33,13 @@ function Deck:isTargeting(x, y)
     return functional.any(self.targets, function(v) return v.x == x and v.y == y end)
 end
 
+function Deck:useCard(level, position)
+    local card = self.active
+    card:use(level, position:copy())
+    card.selected = false
+    card.count = card.count - 1
+    self.active = nil
+    self.targets = nil
+end
+
 return Deck

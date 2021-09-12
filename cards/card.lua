@@ -40,6 +40,11 @@ function Card:draw()
 end
 
 function Card:update(dt)
+    if self.count < 1 then
+        self.hovered = false
+        return
+    end
+
     local x, y = love.mouse.getPosition()
     x = x / 4
     y = y / 4
@@ -50,7 +55,7 @@ function Card:update(dt)
     end
 end
 
-function Card:act(level, position)
+function Card:use(level, position)
 end
 
 return Card

@@ -11,7 +11,7 @@ function Move1:new(count)
     return card
 end
 
-function Move1:act(level, position)
+function Move1:use(level, position)
     level.player:move(position)
 end
 
