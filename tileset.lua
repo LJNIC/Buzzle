@@ -12,4 +12,8 @@ local Tileset = {}
 Tileset.image = image
 Tileset.tiles = tiles
 
+function Tileset:drawTile(id, x, y)
+    love.graphics.draw(self.image, self.tiles[id], x, y)
+end
+
 return Tileset

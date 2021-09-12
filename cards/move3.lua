@@ -1,11 +1,13 @@
 local Card = require "cards.card"
+local utilities = require "utilities"
 
 local Move3 = Card:extend()
-Move3.targets = {Vec2(3, 0), Vec2(0, 3), Vec2(-3, 0), Vec2(0, -3)}
+Move3.targets = functional.map(utilities.directions, function(v) return v * 3 end)
 
 function Move3:new(count)
     local card = Move3.super.new(self, count)
     card.image = love.graphics.newImage("assets/cards/move3.png")
+    card.id = "move3"
     return card
 end
 

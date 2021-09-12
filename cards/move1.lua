@@ -1,11 +1,13 @@
 local Card = require "cards.card"
+local utilities = require "utilities"
 
 local Move1 = Card:extend()
-Move1.targets = {Vec2(1, 0), Vec2(0, 1), Vec2(-1, 0), Vec2(0, -1)}
+Move1.targets = utilities.directions
 
 function Move1:new(count)
     local card = Move1.super.new(self, count)
     card.image = love.graphics.newImage("assets/cards/move1.png")
+    card.id = "move1"
     return card
 end
 

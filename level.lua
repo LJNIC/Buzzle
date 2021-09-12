@@ -30,7 +30,7 @@ function Level:new(filename)
         end
     end
 
-    self.deck = Deck(level_data.properties)
+    self.deck = Deck(level_data.properties, self.player)
 end
 
 function Level:draw()
@@ -38,7 +38,16 @@ function Level:draw()
     for y = 1, self.height do
         for x = 1, self.width do
             local t = self:tile_at(x, y)
-            love.graphics.draw(Tileset.image, Tileset.tiles[t], (x - 1) * TILE_WIDTH, (y - 1) * TILE_WIDTH)
+            local drawX, drawY = (x - 1) * TILE_WIDTH, (y - 1) * TILE_WIDTH
+
+            Tileset:drawTile(t, drawX, drawY)
+            if t == 31 and self.deck:isTargeting(x, y) then
+                Tileset:drawTile(17, drawX, drawY)
+            end
+
+            if t == 41 and self.deck:isTargeting(x, y - 1) then
+                Tileset:drawTile(27, drawX, drawY)
+            end
         end
     end
     self.pudding:draw()
