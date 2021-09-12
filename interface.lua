@@ -1,7 +1,6 @@
 local Plan = require "lib.plan"
 local Rules = Plan.Rules
 local Container = Plan.Container
-local Box = require "box"
 
 local rootRules = Rules.new()
     :addX(Plan.pixel(0))
