@@ -31,6 +31,13 @@ function Level:new(filename)
     end
 
     self.deck = Deck(level_data.properties, self.player)
+    self.active = Vec2(-1, -1)
+end
+
+function Level:update(dt, x, y)
+    if x == nil or y == nil then return end
+    self.active.x = math.floor(x / TILE_WIDTH) + 1
+    self.active.y = math.floor(y / TILE_WIDTH) + 1
 end
 
 function Level:draw()
@@ -41,6 +48,10 @@ function Level:draw()
             local drawX, drawY = (x - 1) * TILE_WIDTH, (y - 1) * TILE_WIDTH
 
             Tileset:drawTile(t, drawX, drawY)
+            if x == self.active.x and y == self.active.y then
+                love.graphics.setColor(1, 1, 0)
+            end
+
             if t == 31 and self.deck:isTargeting(x, y) then
                 Tileset:drawTile(17, drawX, drawY)
             end
@@ -48,6 +59,8 @@ function Level:draw()
             if t == 41 and self.deck:isTargeting(x, y - 1) then
                 Tileset:drawTile(27, drawX, drawY)
             end
+
+            love.graphics.setColor(1, 1, 1)
         end
     end
     self.pudding:draw()

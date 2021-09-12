@@ -12,6 +12,15 @@ end
 
 function game:update(dt)
     interface:update(dt)
+    self.level:update(dt, game:getMouse())
+end
+
+function game:getMouse()
+    local x, y = love.mouse.getPosition()
+    local width, height = love.graphics.getDimensions()
+    x = (x - width / 2) / gameScale + self.level.canvas:getWidth() / 2
+    y = (y - height / 3) / gameScale + self.level.canvas:getHeight() / 2
+    return x, y
 end
 
 function game:draw()
@@ -34,7 +43,7 @@ function game:keypressed(key)
 end
 
 function game:mousepressed(x, y)
-    interface:click()
+    interface:click(x, y)
 end
 
 return game
