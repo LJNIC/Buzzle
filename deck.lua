@@ -1,4 +1,5 @@
 local Object = require "lib.classic"
+local tick = require "lib.tick"
 
 local Deck = Object:extend()
 

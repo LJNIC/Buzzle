@@ -22,9 +22,12 @@ interface.canvas = love.graphics.newCanvas(320, 180)
 
 local uiImage = love.graphics.newImage("assets/UI.png")
 
-function interface:enterLevel(level)
-    self.deck = level.deck
+function interface:enter(level, deck)
+    self.deck = deck
     self.level = level
+
+    root:removeChild(deckContainer)
+    deckContainer:removeChild(self.cardsContainer)
 
     local cardsRules = Rules.new()
         :addX(Plan.center())
@@ -32,7 +35,7 @@ function interface:enterLevel(level)
         :addWidth(Plan.pixel(#self.deck.cards * 34))
         :addHeight(Plan.pixel(48))
     
-    local cardsContainer = Container:new(cardsRules)
+    self.cardsContainer = Container:new(cardsRules)
 
     for i, card in ipairs(self.deck.cards) do
         local cardRules = Rules.new()
@@ -42,33 +45,11 @@ function interface:enterLevel(level)
             :addHeight(Plan.pixel(48))
         card.rules = cardRules
 
-        cardsContainer:addChild(card)
+        self.cardsContainer:addChild(card)
     end
-    deckContainer:addChild(cardsContainer)
+
+    deckContainer:addChild(self.cardsContainer)
     root:addChild(deckContainer)
-end
-
-function interface:click(x, y)
-    for i, card in ipairs(self.deck.cards) do
-        if card.hovered then
-            self.deck:selectCard(i, self.level)
-        end
-    end
-
-    if not self.deck.targets then return end
-
-    local tile = self.level.active
-    if functional.any(self.deck.targets, function(v) return v.x == tile.x and v.y == tile.y end) then
-        self.deck:useCard(self.level, tile)
-    end
-end
-
-local numbers = {["1"] = 1, ["2"] = 2, ["3"] = 3, ["4"] = 4, ["5"] = 5, ["6"] = 6, ["7"] = 7, ["8"] = 8, ["9"] = 9}
-function interface:keypressed(key)
-    local number = numbers[key]
-    if number and #self.deck.cards >= number then
-        self.deck:selectCard(number, self.level)
-    end
 end
 
 function interface:update(dt)
@@ -78,6 +59,7 @@ end
 function interface:draw()
     love.graphics.push("all")
     love.graphics.setCanvas(self.canvas)
+    love.graphics.clear()
     love.graphics.draw(uiImage)
     root:draw()
     love.graphics.pop()

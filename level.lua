@@ -3,7 +3,6 @@ local Tileset = require "tileset"
 local Player = require "entities.player"
 local Pudding = require "entities.pudding"
 local Squar = require "entities.squar"
-local Deck = require "deck"
 
 local Level = Object:extend()
 Level.tile_types = { [0] = "floor", [1] = "wall", [2] = "goal", [3] = "border" }
@@ -23,18 +22,20 @@ function Level:new(filename)
     self.tiles = tile_layer.data
 
     self.objects = {}
+    self.puddings = {}
     for _,object in ipairs(object_layer.objects) do
         local x, y = (object.x / TILE_WIDTH) + 1, object.y / TILE_WIDTH
         if object.type == "player" then
             self.player = Player(x, y)
         elseif object.type == "pudding" then
-            self.pudding = Pudding(x, y)
+            table.insert(self.puddings, Pudding(x, y))
         elseif object.type == "squar" then
             table.insert(self.objects, Squar(x, y))
         end
     end
 
-    self.deck = Deck(level_data.properties, self.player)
+    self.cards = level_data.properties
+
     self.active = Vec2(-1, -1)
     self.activeValid = false
 end
@@ -55,7 +56,7 @@ function Level:isActive(x, y)
     return self.active.x == x and self.active.y == y
 end
 
-function Level:draw()
+function Level:draw(deck)
     love.graphics.setCanvas(self.canvas)
     for y = 1, self.height do
         for x = 1, self.width do
@@ -63,7 +64,7 @@ function Level:draw()
             local drawX, drawY = (x - 1) * TILE_WIDTH, (y - 1) * TILE_WIDTH
 
             Tileset:drawTile(t, drawX, drawY)
-            if t == 31 and self.deck:isTargeting(x, y) then
+            if t == 31 and deck:isTargeting(x, y) then
                 if self:isActive(x, y) then
                     Tileset:drawTile(68, drawX, drawY)
                 else
@@ -71,7 +72,7 @@ function Level:draw()
                 end
             end
 
-            if t == 41 and self.deck:isTargeting(x, y - 1) then
+            if t == 41 and deck:isTargeting(x, y - 1) then
                 if self:isActive(x, y - 1) then
                     Tileset:drawTile(78, drawX, drawY)
                 else
@@ -82,12 +83,19 @@ function Level:draw()
             love.graphics.setColor(1, 1, 1)
         end
     end
+
     for _,object in ipairs(self.objects) do
         if object.alive then
             object:draw()
         end
     end
-    self.pudding:draw()
+
+    for _,pudding in ipairs(self.puddings) do
+        if pudding.alive then
+            pudding:draw()
+        end
+    end
+
     self.player:draw()
     love.graphics.setCanvas()
 end
