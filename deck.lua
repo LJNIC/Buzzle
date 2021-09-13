@@ -22,6 +22,7 @@ function Deck:new(cards, player)
 end
 
 function Deck:selectCard(index, level)
+    if self.cards[index].count < 1 then return end
     self.active = self.cards[index]
     for _, card in ipairs(self.cards) do card.selected = false end
     self.active.selected = true

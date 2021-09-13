@@ -7,7 +7,7 @@ local interfaceScale = 4
 local gameScale = 2
 
 function game:enter()
-    self.level = Level("levels.level2")
+    self.level = Level("levels.level1")
     interface:enterLevel(self.level)
 end
 
@@ -42,6 +42,8 @@ function game:keypressed(key)
     elseif key == "left" then
         gameScale = gameScale - 1
     end
+
+    interface:keypressed(key)
 end
 
 function game:mousepressed(x, y)

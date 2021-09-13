@@ -36,7 +36,7 @@ function Card:draw()
     Card.super.draw(self)
     love.graphics.setFont(font)
     love.graphics.setColor(0.1, 0.1, 0.2)
-    love.graphics.print("x" .. tostring(self.count), self.x + 12, self.y + 46)
+    love.graphics.print("x" .. tostring(self.count), self.x + 12, self.y + 44)
 end
 
 function Card:update(dt)

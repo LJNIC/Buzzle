@@ -36,7 +36,7 @@ function interface:enterLevel(level)
 
     for i, card in ipairs(self.deck.cards) do
         local cardRules = Rules.new()
-            :addY(Plan.pixel(2))
+            :addY(Plan.pixel(6))
             :addX(Plan.pixel((i - 1) * 32 + (i - 1) * 3))
             :addWidth(Plan.pixel(32))
             :addHeight(Plan.pixel(48))
@@ -60,6 +60,14 @@ function interface:click(x, y)
     local tile = self.level.active
     if functional.any(self.deck.targets, function(v) return v.x == tile.x and v.y == tile.y end) then
         self.deck:useCard(self.level, tile)
+    end
+end
+
+local numbers = {["1"] = 1, ["2"] = 2, ["3"] = 3, ["4"] = 4, ["5"] = 5, ["6"] = 6, ["7"] = 7, ["8"] = 8, ["9"] = 9}
+function interface:keypressed(key)
+    local number = numbers[key]
+    if number and #self.deck.cards >= number then
+        self.deck:selectCard(number, self.level)
     end
 end
 

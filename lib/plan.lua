@@ -1,5 +1,5 @@
 local Plan = {
-  _VERSION = '0.3.1',
+  _VERSION = '0.4.0',
   _DESCRIPTION = 'Plan, a layout helper, designed for LÖVE',
   _URL = 'https://github.com/zombrodo/plan',
   _LICENSE = [[
@@ -53,6 +53,14 @@ local function getRoot(container)
     end
   end
   return parent
+end
+
+local function isNumber(maybeNumber)
+  return type(maybeNumber) == "number"
+end
+
+local function isValidRule(maybeRule)
+  return maybeRule.realise ~= nil and type(maybeRule.realise) == "function"
 end
 
 -- ============================================================================
@@ -169,6 +177,10 @@ function PixelRule:clone()
   return PixelRule.new(self.value)
 end
 
+function PixelRule:set(value)
+  self.value = value
+end
+
 function Plan.pixel(value)
   return PixelRule.new(value)
 end
@@ -202,6 +214,10 @@ end
 
 function RelativeRule:clone()
   return RelativeRule.new(self.value)
+end
+
+function RelativeRule:set(value)
+  self.value = value
 end
 
 function Plan.relative(value)
@@ -242,6 +258,10 @@ function CenterRule:clone()
   return CenterRule.new()
 end
 
+function CenterRule:set()
+  -- no op
+end
+
 function Plan.center()
   return CenterRule.new()
 end
@@ -277,6 +297,10 @@ function AspectRule:clone()
   return AspectRule.new(self.value)
 end
 
+function AspectRule:set(value)
+  self.value = value
+end
+
 function Plan.aspect(value)
   return AspectRule.new(value)
 end
@@ -301,12 +325,16 @@ function ParentRule:clone()
   return ParentRule.new()
 end
 
+function ParentRule:set()
+  -- no op
+end
+
 function Plan.parent()
   return ParentRule.new()
 end
 
 -- ====================================
--- Full Rule
+-- Max Rule
 -- ====================================
 
 local MaxRule = {}
@@ -320,11 +348,11 @@ end
 
 function MaxRule:realise(dimension, element, rules)
   if dimension == "x" then
-    return rules.w:realise("w", element, rules) - self.value
+    return element.parent.w - self.value
   end
 
   if dimension == "y" then
-    return rules.h:realise("h", element, rules) - self.value
+    return element.parent.h - self.value
   end
 
   if dimension == "w" then
@@ -334,6 +362,10 @@ function MaxRule:realise(dimension, element, rules)
   if dimension == "h" then
     return element.parent.h - self.value
   end
+end
+
+function MaxRule:set(value)
+  self.value = value
 end
 
 function MaxRule:clone()
@@ -363,24 +395,52 @@ function Rules.new()
   return self
 end
 
+local function validateRuleInput(input, dimension)
+  if isNumber(input) then
+    return PixelRule.new(input)
+  end
+
+  if not isValidRule(input) then
+    error("An invalid input was passed to " .. dimension .. "dimension")
+  end
+
+  return input
+end
+
 function Rules:addX(rule)
-  self.rules.x = rule
+  self.rules.x = validateRuleInput(rule, "x")
   return self
+end
+
+function Rules:getX()
+  return self.rules.x
 end
 
 function Rules:addY(rule)
-  self.rules.y = rule
+  self.rules.y = validateRuleInput(rule, "y")
   return self
+end
+
+function Rules:getY()
+  return self.rules.y
 end
 
 function Rules:addWidth(rule)
-  self.rules.w = rule
+  self.rules.w = validateRuleInput(rule, "width")
   return self
 end
 
+function Rules:getWidth()
+  return self.rules.w
+end
+
 function Rules:addHeight(rule)
-  self.rules.h = rule
+  self.rules.h = validateRuleInput(rule, "height")
   return self
+end
+
+function Rules:getHeight()
+  return self.rules.h
 end
 
 function Rules:realise(element)
@@ -411,6 +471,25 @@ function Rules:clone()
   end
 
   return copy
+end
+
+function Rules:update(dimension, fn, ...)
+  dimension = string.lower(dimension)
+  if dimension == "x" then
+    self.rules.x = fn(self:getX(), ...)
+  end
+
+  if dimension == "y" then
+    self.rules.y = fn(self:getY(), ...)
+  end
+
+  if dimension == "w" or dimension == "width" then
+    self.rules.w = fn(self:getWidth(), ...)
+  end
+
+  if dimension == "h" or dimension == "height" then
+    self.rules.h = fn(self:getHeight(), ...)
+  end
 end
 
 Plan.Rules = Rules
