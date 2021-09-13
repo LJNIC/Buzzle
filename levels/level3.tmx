@@ -14,10 +14,20 @@
  </layer>
  <objectgroup id="2" name="objects">
   <object id="1" type="player" gid="38" x="80" y="32" width="16" height="16"/>
-  <object id="2" gid="39" x="128" y="48" width="16" height="16"/>
-  <object id="3" gid="39" x="96" y="80" width="16" height="16"/>
+  <object id="2" type="squar" gid="39" x="128" y="48" width="16" height="16">
+   <properties>
+    <property name="damage" value="1"/>
+    <property name="direction" value="down"/>
+   </properties>
+  </object>
+  <object id="3" type="squar" gid="39" x="96" y="80" width="16" height="16">
+   <properties>
+    <property name="damage" value="1"/>
+    <property name="direction" value="up"/>
+   </properties>
+  </object>
   <object id="27" gid="48" x="96" y="64" width="16" height="16"/>
   <object id="28" gid="48" x="128" y="64" width="16" height="16"/>
-  <object id="30" gid="28" x="144" y="64" width="16" height="16"/>
+  <object id="30" type="pudding" gid="28" x="144" y="64" width="16" height="16"/>
  </objectgroup>
 </map>

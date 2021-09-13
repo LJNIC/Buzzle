@@ -75,7 +75,7 @@ return {
         {
           id = 2,
           name = "",
-          type = "",
+          type = "squar",
           shape = "rectangle",
           x = 128,
           y = 48,
@@ -84,12 +84,15 @@ return {
           rotation = 0,
           gid = 39,
           visible = true,
-          properties = {}
+          properties = {
+            ["damage"] = "1",
+            ["direction"] = "down"
+          }
         },
         {
           id = 3,
           name = "",
-          type = "",
+          type = "squar",
           shape = "rectangle",
           x = 96,
           y = 80,
@@ -98,7 +101,10 @@ return {
           rotation = 0,
           gid = 39,
           visible = true,
-          properties = {}
+          properties = {
+            ["damage"] = "1",
+            ["direction"] = "up"
+          }
         },
         {
           id = 27,
@@ -131,7 +137,7 @@ return {
         {
           id = 30,
           name = "",
-          type = "",
+          type = "pudding",
           shape = "rectangle",
           x = 144,
           y = 64,

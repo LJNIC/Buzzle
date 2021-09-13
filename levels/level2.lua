@@ -1,7 +1,7 @@
 return {
   version = "1.5",
   luaversion = "5.1",
-  tiledversion = "1.7.0",
+  tiledversion = "1.7.2",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 14,
@@ -20,8 +20,7 @@ return {
     {
       name = "tileset1",
       firstgid = 1,
-      filename = "tileset1.tsx",
-      exportfilename = "tileset1.lua"
+      filename = "tileset1.tsx"
     }
   },
   layers = {
@@ -104,7 +103,10 @@ return {
           rotation = 0,
           gid = 39,
           visible = true,
-          properties = {}
+          properties = {
+            ["damage"] = "1",
+            ["direction"] = "left"
+          }
         },
         {
           id = 4,

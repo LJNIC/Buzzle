@@ -84,7 +84,9 @@ return {
           rotation = 0,
           gid = 39,
           visible = true,
-          properties = {}
+          properties = {
+            ["direction"] = "up"
+          }
         },
         {
           id = 3,
@@ -140,7 +142,9 @@ return {
           rotation = 0,
           gid = 39,
           visible = true,
-          properties = {}
+          properties = {
+            ["direction"] = "up"
+          }
         },
         {
           id = 7,

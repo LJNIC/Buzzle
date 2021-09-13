@@ -75,7 +75,7 @@ return {
         {
           id = 3,
           name = "",
-          type = "",
+          type = "pudding",
           shape = "rectangle",
           x = 112,
           y = 32,
@@ -112,7 +112,9 @@ return {
           rotation = 0,
           gid = 39,
           visible = true,
-          properties = {}
+          properties = {
+            ["direction"] = "left"
+          }
         },
         {
           id = 6,

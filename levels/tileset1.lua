@@ -1,7 +1,7 @@
 return {
   version = "1.5",
   luaversion = "5.1",
-  tiledversion = "1.7.0",
+  tiledversion = "1.7.2",
   name = "tileset1",
   tilewidth = 16,
   tileheight = 16,
@@ -25,6 +25,14 @@ return {
   wangsets = {},
   tilecount = 80,
   tiles = {
+    {
+      id = 14,
+      type = "trap"
+    },
+    {
+      id = 27,
+      type = "pudding"
+    },
     {
       id = 36,
       animation = {
@@ -73,6 +81,10 @@ return {
     {
       id = 37,
       type = "player"
+    },
+    {
+      id = 38,
+      type = "squar"
     }
   }
 }

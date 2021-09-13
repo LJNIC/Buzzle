@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="14" height="7" tilewidth="16" tileheight="16" infinite="0" nextlayerid="3" nextobjectid="27">
+ <tileset firstgid="1" source="tileset1.tsx"/>
+ <layer id="1" name="tiles" width="14" height="7">
+  <data encoding="csv">
+51,51,51,51,51,51,51,51,51,51,51,51,51,51,
+51,31,31,31,31,31,31,31,31,31,31,31,31,51,
+51,31,31,41,31,31,31,31,31,31,31,31,31,51,
+51,31,31,31,31,41,31,31,41,31,31,31,31,51,
+51,41,31,31,31,31,31,31,31,31,31,41,31,51,
+51,51,31,31,31,31,31,31,31,31,31,51,41,51,
+51,51,41,41,41,41,41,41,41,41,41,51,51,51
+</data>
+ </layer>
+ <objectgroup id="2" name="objects">
+  <object id="1" gid="38" x="48" y="64" width="16" height="16"/>
+  <object id="2" gid="28" x="192" y="80" width="16" height="16"/>
+  <object id="3" gid="39" x="32" y="48" width="16" height="16">
+   <properties>
+    <property name="damage" value="2"/>
+    <property name="direction" value="left"/>
+   </properties>
+  </object>
+  <object id="4" gid="39" x="64" y="80" width="16" height="16">
+   <properties>
+    <property name="direction" value="down"/>
+   </properties>
+  </object>
+  <object id="5" gid="39" x="80" y="32" width="16" height="16">
+   <properties>
+    <property name="damage" value="2"/>
+    <property name="direction" value="left"/>
+   </properties>
+  </object>
+  <object id="9" gid="39" x="176" y="48" width="16" height="16">
+   <properties>
+    <property name="damage" value="3"/>
+    <property name="direction" value="left"/>
+   </properties>
+  </object>
+  <object id="10" gid="50" x="160" y="48" width="16" height="16"/>
+  <object id="12" gid="39" x="112" y="96" width="16" height="16">
+   <properties>
+    <property name="damage" value="3"/>
+    <property name="direction" value="up"/>
+   </properties>
+  </object>
+  <object id="13" gid="50" x="112" y="80" width="16" height="16"/>
+  <object id="14" gid="48" x="112" y="64" width="16" height="16"/>
+  <object id="15" gid="39" x="96" y="64" width="16" height="16">
+   <properties>
+    <property name="direction" value="right"/>
+   </properties>
+  </object>
+  <object id="16" gid="15" x="112" y="48" width="16" height="16"/>
+  <object id="17" gid="15" x="80" y="80" width="16" height="16"/>
+  <object id="18" gid="15" x="128" y="96" width="16" height="16"/>
+  <object id="19" gid="15" x="144" y="64" width="16" height="16"/>
+  <object id="20" gid="15" x="160" y="80" width="16" height="16"/>
+  <object id="21" gid="15" x="192" y="48" width="16" height="16"/>
+  <object id="22" gid="39" x="144" y="32" width="16" height="16">
+   <properties>
+    <property name="damage" value="2"/>
+    <property name="direction" value="left"/>
+   </properties>
+  </object>
+  <object id="23" gid="49" x="128" y="32" width="16" height="16"/>
+  <object id="24" gid="49" x="64" y="32" width="16" height="16"/>
+  <object id="25" gid="49" x="16" y="48" width="16" height="16"/>
+  <object id="26" gid="48" x="64" y="96" width="16" height="16"/>
+ </objectgroup>
+</map>
