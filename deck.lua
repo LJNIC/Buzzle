@@ -4,10 +4,13 @@ local tick = require "lib.tick"
 local Deck = Object:extend()
 
 local cardTypes = {
-    ["attack"] = require "cards.attack",
     ["move1"] = require "cards.move1",
     ["move2"] = require "cards.move2",
-    ["move3"] = require "cards.move3"
+    ["move3"] = require "cards.move3",
+    ["attack"] = require "cards.attack",
+    ["block"] = require "cards.block",
+    ["disarm"] = require "cards.disarm",
+    ["push"] = require "cards.push"
 }
 
 function Deck:new(cards, player)
