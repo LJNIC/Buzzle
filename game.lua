@@ -3,7 +3,7 @@ local Level = require "level"
 local interface = require "interface"
 
 local game = {}
-local interfaceScale = 4
+interfaceScale = love.graphics.getWidth()/320
 local gameScale = 2
 
 function game:enter()

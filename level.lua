@@ -1,8 +1,8 @@
 local Object = require "lib.classic"
 local Tileset = require "tileset"
-local Player = require "player"
-local Pudding = require "pudding"
-local Squar = require "squar"
+local Player = require "entities.player"
+local Pudding = require "entities.pudding"
+local Squar = require "entities.squar"
 local Deck = require "deck"
 
 local Level = Object:extend()

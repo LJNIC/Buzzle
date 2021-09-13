@@ -1,5 +1,5 @@
 local Tileset = require "tileset"
-local Base = require "base"
+local Base = require "entities.base"
 
 local Pudding = Base:extend()
 

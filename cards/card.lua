@@ -46,8 +46,8 @@ function Card:update(dt)
     end
 
     local x, y = love.mouse.getPosition()
-    x = x / 4
-    y = y / 4
+    x = x / interfaceScale
+    y = y / interfaceScale
     if x > self.x and x < self.x + self.w and y > self.y and y < self.y + self.h then
         self.hovered = true
     else 

@@ -1,4 +1,4 @@
-local Base = require "base"
+local Base = require "entities.base"
 local Tileset = require "tileset"
 
 local Player = Base:extend()
