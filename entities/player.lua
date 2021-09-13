@@ -5,7 +5,7 @@ local Player = Base:extend()
 
 function Player:new(x, y)
     Player.super.new(self, x, y)
-    self.tile_id = 38
+    self.tileId = 38
     self.health = 3
     self.energy = 3
 end
@@ -15,7 +15,7 @@ end
 
 function Player:draw()
     local drawn = self.drawnPosition
-    love.graphics.draw(Tileset.image, Tileset.tiles[self.tile_id], drawn.x, drawn.y)
+    Tileset:drawTile(self.tileId, drawn.x, drawn.y)
 end
 
 return Player

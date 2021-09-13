@@ -1,12 +1,8 @@
 local Object = require "lib.classic"
 local flux = require "lib.flux"
+local convertToDrawn = require("utilities").convertToDrawn
 
 local Base = Object:extend()
-
-local offset = Vec2(-1, -1)
-local function convertToDrawn(position)
-    return (position + offset) * TILE_WIDTH
-end
 
 function Base:new(x, y)
     self.position = Vec2(x, y)
@@ -34,9 +30,12 @@ end
 
 function Base:attack(position)
     local drawn = convertToDrawn(position)
+    self.attacking = true
     flux.to(self.drawnPosition, 0.1, {x = drawn.x, y = drawn.y}):ease("quadin"):oncomplete(function()
         local original = convertToDrawn(self.position)
-        flux.to(self.drawnPosition, 0.2, {x = original.x, y = original.y}):ease("linear")
+        flux.to(self.drawnPosition, 0.2, {x = original.x, y = original.y}):ease("linear"):oncomplete(function()
+            self.attacking = false
+        end)
     end)
 end
 

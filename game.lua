@@ -45,6 +45,8 @@ function game:keypressed(key)
         gameScale = gameScale + 1
     elseif key == "left" then
         gameScale = gameScale - 1
+    elseif key == "n" then
+        GameManager:enter(GameManager.levelNumber + 1)
     end
 
     local number = numbers[key]
@@ -59,7 +61,6 @@ function game:mousepressed(x, y)
     end
 
     GameManager:useCard()
-
 end
 
 return game

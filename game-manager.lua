@@ -13,11 +13,11 @@ for i = 1, level_count do
     table.insert(GameManager.levels, Level("levels.level" .. i))
 end
 
-function GameManager:enter(level_number)
-    self.level = self.levels[level_number]
-    self.level_number = level_number
+function GameManager:enter(levelNumber)
+    self.level = self.levels[levelNumber]
+    self.levelNumber = levelNumber
     self.deck = Deck(self.level.cards, self.level.player)
-    interface:enter(self.level, self.deck)
+    interface:enter(self.deck, self.level.player)
 end
 
 function GameManager:checkWin()
@@ -27,8 +27,7 @@ function GameManager:checkWin()
         end
     end
 
-    tick.delay(function() self:enter(self.level_number + 1) end, 0.3)
-    
+    tick.delay(function() self:enter(self.levelNumber + 1) end, 0.3)
 end
 
 function GameManager:update()
@@ -38,7 +37,6 @@ function GameManager:update()
 end
 
 function GameManager:selectCard(index)
-    print(self.level)
     if index and #self.deck.cards >= index then
         self.deck:selectCard(index, self.level)
     end
@@ -47,9 +45,18 @@ end
 function GameManager:useCard()
     if not self.deck.targets then return end
 
-    local tile = self.level.active
+    local level = self.level
+    local tile = level.active
     if functional.any(self.deck.targets, function(v) return v.x == tile.x and v.y == tile.y end) then
-        self.deck:useCard(self.level, tile)
+        self.deck:useCard(level, tile)
+    else
+        return
+    end
+
+    -- if we played a card, play out a turn
+
+    for _,enemy in ipairs(level.objects) do
+        enemy:attack(enemy.position + enemy.direction)
     end
 
     tick.delay(function() GameManager:update() end, 0.2)

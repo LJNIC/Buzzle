@@ -24,13 +24,18 @@ function Level:new(filename)
     self.objects = {}
     self.puddings = {}
     for _,object in ipairs(object_layer.objects) do
+        local properties = object.properties
         local x, y = (object.x / TILE_WIDTH) + 1, object.y / TILE_WIDTH
-        if object.type == "player" then
-            self.player = Player(x, y)
-        elseif object.type == "pudding" then
+
+        local objectType = Tileset.tiles[object.gid] and Tileset.tiles[object.gid].type or ""
+        local properties = Tileset:getProperties(objectType, properties)
+
+        if objectType == "player" then
+            self.player = Player(x, y, properties.health)
+        elseif objectType == "pudding" then
             table.insert(self.puddings, Pudding(x, y))
-        elseif object.type == "squar" then
-            table.insert(self.objects, Squar(x, y))
+        elseif objectType == "squar" then
+            table.insert(self.objects, Squar(x, y, properties.damage, properties.direction))
         end
     end
 
@@ -42,6 +47,7 @@ end
 
 function Level:update(dt, x, y)
     if x == nil or y == nil then return end
+
     local x, y = math.floor(x / TILE_WIDTH) + 1, math.floor(y / TILE_WIDTH) + 1
     if self:tileAt(x, y) then
         self.active.x = x
