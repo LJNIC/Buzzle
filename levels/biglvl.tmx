@@ -17,7 +17,7 @@
   <object id="2" gid="28" x="192" y="80" width="16" height="16"/>
   <object id="3" gid="39" x="32" y="48" width="16" height="16">
    <properties>
-    <property name="damage" value="2"/>
+    <property name="damage" type="int" value="2"/>
     <property name="direction" value="left"/>
    </properties>
   </object>
@@ -28,20 +28,20 @@
   </object>
   <object id="5" gid="39" x="80" y="32" width="16" height="16">
    <properties>
-    <property name="damage" value="2"/>
+    <property name="damage" type="int" value="2"/>
     <property name="direction" value="left"/>
    </properties>
   </object>
   <object id="9" gid="39" x="176" y="48" width="16" height="16">
    <properties>
-    <property name="damage" value="3"/>
+    <property name="damage" type="int" value="3"/>
     <property name="direction" value="left"/>
    </properties>
   </object>
   <object id="10" gid="50" x="160" y="48" width="16" height="16"/>
   <object id="12" gid="39" x="112" y="96" width="16" height="16">
    <properties>
-    <property name="damage" value="3"/>
+    <property name="damage" type="int" value="3"/>
     <property name="direction" value="up"/>
    </properties>
   </object>
@@ -60,7 +60,7 @@
   <object id="21" gid="15" x="192" y="48" width="16" height="16"/>
   <object id="22" gid="39" x="144" y="32" width="16" height="16">
    <properties>
-    <property name="damage" value="2"/>
+    <property name="damage" type="int" value="2"/>
     <property name="direction" value="left"/>
    </properties>
   </object>

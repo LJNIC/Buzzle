@@ -99,7 +99,7 @@ return {
           gid = 39,
           visible = true,
           properties = {
-            ["damage"] = "2",
+            ["damage"] = 2,
             ["direction"] = "left"
           }
         },
@@ -132,7 +132,7 @@ return {
           gid = 39,
           visible = true,
           properties = {
-            ["damage"] = "2",
+            ["damage"] = 2,
             ["direction"] = "left"
           }
         },
@@ -149,7 +149,7 @@ return {
           gid = 39,
           visible = true,
           properties = {
-            ["damage"] = "3",
+            ["damage"] = 3,
             ["direction"] = "left"
           }
         },
@@ -180,7 +180,7 @@ return {
           gid = 39,
           visible = true,
           properties = {
-            ["damage"] = "3",
+            ["damage"] = 3,
             ["direction"] = "up"
           }
         },
@@ -325,7 +325,7 @@ return {
           gid = 39,
           visible = true,
           properties = {
-            ["damage"] = "2",
+            ["damage"] = 2,
             ["direction"] = "left"
           }
         },
