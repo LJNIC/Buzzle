@@ -106,6 +106,17 @@ function Level:draw(deck)
     love.graphics.setCanvas()
 end
 
+function Level:objectAt(vecOrX, y)
+    local x = y and vecOrX or vecOrX.x
+    local y = y and y or vecOrX.y
+
+    if self.player.position.x == x and self.player.position.y == y then
+        return self.player
+    else
+        return functional.find_match(self.objects, function(o) return o.x == x and o.y == y end)
+    end
+end
+
 function Level:isWalkable(vecOrX, y)
     for _,object in ipairs(self.objects) do
         if object.alive and object.position:equal(vecOrX, y) and object:is(Squar) then

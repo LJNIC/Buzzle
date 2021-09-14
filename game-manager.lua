@@ -30,12 +30,6 @@ function GameManager:checkWin()
     tick.delay(function() self:enter(self.levelNumber + 1) end, 0.3)
 end
 
-function GameManager:update()
-    local pudding = functional.find_match(self.level.puddings, function(p) return p.position == self.level.player.position end)
-    if pudding then pudding.alive = false end
-    self:checkWin()
-end
-
 function GameManager:selectCard(index)
     if index and #self.deck.cards >= index then
         self.deck:selectCard(index, self.level)
@@ -54,12 +48,20 @@ function GameManager:useCard()
     end
 
     -- if we played a card, play out a turn
+    tick.delay(function() GameManager:doTurn() end, 0.2)
+end
 
-    for _,enemy in ipairs(level.objects) do
-        enemy:attack(enemy.position + enemy.direction)
+function GameManager:doTurn()
+    for _,enemy in ipairs(functional.filter(self.level.objects, function(o) return o.alive end)) do
+        enemy:attack(self.level)
     end
 
-    tick.delay(function() GameManager:update() end, 0.2)
+    local pudding = functional.find_match(self.level.puddings, function(p) return p.position == self.level.player.position end)
+    if pudding then pudding.alive = false end
+
+    interface:updateHealth()
+
+    tick.delay(function() GameManager:checkWin() end, 0.2)
 end
 
 return GameManager

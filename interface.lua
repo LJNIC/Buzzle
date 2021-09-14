@@ -84,6 +84,15 @@ function interface:enter(deck, player)
     root:addChild(deckContainer)
 end
 
+function interface:updateHealth()
+    local player = self.player
+    --if player.health == player.maxHealth then return end
+
+    for i = player.maxHealth, player.health + 1, -1 do
+        self.healthIcons[i].full = false
+    end
+end
+
 function interface:update(dt)
     root:update(dt)
 end
