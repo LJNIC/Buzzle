@@ -11,17 +11,18 @@ return {
   nextlayerid = 3,
   nextobjectid = 32,
   properties = {
-    ["attack"] = "1",
-    ["health"] = "2",
-    ["move1"] = "1",
-    ["move2"] = "1",
-    ["move3"] = "1"
+    ["attack"] = 1,
+    ["health"] = 2,
+    ["move1"] = 1,
+    ["move2"] = 1,
+    ["move3"] = 1
   },
   tilesets = {
     {
       name = "tileset1",
       firstgid = 1,
-      filename = "tileset1.tsx"
+      filename = "tileset1.tsx",
+      exportfilename = "tileset1.lua"
     }
   },
   layers = {

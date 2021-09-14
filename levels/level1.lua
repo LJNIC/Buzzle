@@ -19,7 +19,8 @@ return {
     {
       name = "tileset1",
       firstgid = 1,
-      filename = "tileset1.tsx"
+      filename = "tileset1.tsx",
+      exportfilename = "tileset1.lua"
     }
   },
   layers = {
