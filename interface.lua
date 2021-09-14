@@ -59,7 +59,7 @@ function interface:enter(deck, player)
     for i, card in ipairs(self.deck.cards) do
         local cardRules = Rules.new()
             :addY(6)
-            :addX((i - 1) * 32 + (i - 1) * 3)
+            :addX((i - 1) * 34)
             :addWidth(32)
             :addHeight(48)
         card.rules = cardRules

@@ -52,14 +52,20 @@ function GameManager:useCard()
 end
 
 function GameManager:doTurn()
-    for _,enemy in ipairs(functional.filter(self.level.objects, function(o) return o.alive end)) do
-        enemy:attack(self.level)
+    local level = self.level
+
+    for _,enemy in ipairs(functional.filter(level.objects, function(o) return o.alive end)) do
+        enemy:attack(level)
     end
 
-    local pudding = functional.find_match(self.level.puddings, function(p) return p.position == self.level.player.position end)
+    local pudding = functional.find_match(level.puddings, function(p) return p.position == level.player.position end)
     if pudding then pudding.alive = false end
 
     interface:updateHealth()
+
+    if level.player.blocking > 0 then
+        level.player.blocking = level.player.blocking - 1
+    end
 
     tick.delay(function() GameManager:checkWin() end, 0.2)
 end

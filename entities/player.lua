@@ -9,6 +9,7 @@ function Player:new(x, y, health)
     self.health = tonumber(health)
     self.maxHealth = tonumber(health)
     self.energy = 3
+    self.blocking = 0
 end
 
 function Player:update(dt)
@@ -20,7 +21,9 @@ function Player:draw()
 end
 
 function Player:damage(amount)
-    self.health = self.health - amount
+    if self.blocking < 1 then
+        self.health = self.health - amount
+    end
 end
 
 return Player

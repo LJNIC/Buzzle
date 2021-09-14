@@ -12,6 +12,7 @@ local cardTypes = {
     ["disarm"] = require "cards.disarm",
     ["push"] = require "cards.push"
 }
+local cardOrder = { move1 = 1, move2 = 2, move3 = 3, attack = 4, block = 5, disarm = 6, push = 7}
 
 function Deck:new(cards, player)
     self.player = player
@@ -20,7 +21,7 @@ function Deck:new(cards, player)
         local card = cardTypes[cardType]
         table.insert(self.cards, card:new(count))
     end
-    table.sort(self.cards, function(a, b) return a.id < b.id end)
+    table.sort(self.cards, function(a, b) return cardOrder[a.id] < cardOrder[b.id] end)
     self.active = nil
     self.targets = nil
 end
