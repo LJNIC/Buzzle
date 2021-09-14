@@ -74,7 +74,9 @@ return {
           rotation = 0,
           gid = 38,
           visible = true,
-          properties = {}
+          properties = {
+            ["health"] = "1"
+          }
         },
         {
           id = 7,

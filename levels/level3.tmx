@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="14" height="7" tilewidth="16" tileheight="16" infinite="0" nextlayerid="3" nextobjectid="31">
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="14" height="7" tilewidth="16" tileheight="16" infinite="0" nextlayerid="3" nextobjectid="32">
+ <properties>
+  <property name="attack" value="1"/>
+  <property name="health" value="2"/>
+  <property name="move1" value="1"/>
+  <property name="move2" value="1"/>
+  <property name="move3" value="1"/>
+ </properties>
  <tileset firstgid="1" source="tileset1.tsx"/>
  <layer id="1" name="tiles" width="14" height="7">
   <data encoding="csv">
 55,55,55,55,55,55,55,55,55,55,55,55,55,55,
 55,55,55,55,55,31,31,31,31,55,55,55,55,55,
-55,55,55,55,55,31,41,31,31,52,55,55,55,55,
+55,55,55,55,55,31,31,31,31,52,55,55,55,55,
 55,55,55,55,55,31,31,31,31,31,55,55,55,55,
-55,55,55,55,55,31,31,31,41,41,52,55,55,55,
-55,55,55,55,55,41,41,41,55,55,55,55,55,55,
+55,55,55,55,55,31,31,31,31,41,52,55,55,55,
+55,55,55,55,55,41,41,41,41,55,55,55,55,55,
 55,55,55,55,55,55,55,55,55,55,55,55,55,55
 </data>
  </layer>
@@ -16,16 +23,18 @@
   <object id="1" type="player" gid="38" x="80" y="32" width="16" height="16"/>
   <object id="2" type="squar" gid="39" x="128" y="48" width="16" height="16">
    <properties>
-    <property name="direction" value="down"/>
-   </properties>
-  </object>
-  <object id="3" type="squar" gid="39" x="96" y="80" width="16" height="16">
-   <properties>
+    <property name="damage" value="1"/>
     <property name="direction" value="up"/>
    </properties>
   </object>
+  <object id="3" type="squar" gid="39" x="112" y="64" width="16" height="16">
+   <properties>
+    <property name="damage" value="1"/>
+    <property name="direction" value="left"/>
+   </properties>
+  </object>
   <object id="27" gid="48" x="96" y="64" width="16" height="16"/>
-  <object id="28" gid="48" x="128" y="64" width="16" height="16"/>
   <object id="30" type="pudding" gid="28" x="144" y="64" width="16" height="16"/>
+  <object id="31" gid="48" x="128" y="32" width="16" height="16"/>
  </objectgroup>
 </map>

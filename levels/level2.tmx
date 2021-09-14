@@ -5,6 +5,7 @@
  </editorsettings>
  <properties>
   <property name="attack" type="int" value="1"/>
+  <property name="health" value="1"/>
   <property name="move1" type="int" value="1"/>
   <property name="move2" type="int" value="1"/>
   <property name="move3" type="int" value="1"/>
@@ -26,6 +27,7 @@
   <object id="2" type="pudding" gid="28" x="64" y="48" width="16" height="16"/>
   <object id="3" type="squar" gid="39" x="96" y="48" width="16" height="16">
    <properties>
+    <property name="damage" value="1"/>
     <property name="direction" value="left"/>
    </properties>
   </object>
