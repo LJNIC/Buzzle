@@ -39,7 +39,7 @@
   </object>
   <object id="4" type="squar" gid="39" x="64" y="80" width="16" height="16">
    <properties>
-    <property name="damage" value="1"/>
+    <property name="damage" type="int" value="1"/>
     <property name="direction" value="down"/>
    </properties>
   </object>

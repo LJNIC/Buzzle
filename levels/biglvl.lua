@@ -127,7 +127,7 @@ return {
           gid = 39,
           visible = true,
           properties = {
-            ["damage"] = "1",
+            ["damage"] = 1,
             ["direction"] = "down"
           }
         },

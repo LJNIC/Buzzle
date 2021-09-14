@@ -32,7 +32,7 @@
   <object id="4" type="trap" gid="15" x="80" y="64" width="16" height="16"/>
   <object id="5" type="squar" gid="39" x="128" y="80" width="16" height="16">
    <properties>
-    <property name="damage" value="2"/>
+    <property name="damage" type="int" value="2"/>
     <property name="direction" value="left"/>
    </properties>
   </object>
