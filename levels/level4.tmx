@@ -6,7 +6,6 @@
  <properties>
   <property name="attack" type="int" value="1"/>
   <property name="block" type="int" value="1"/>
-  <property name="health" type="int" value="2"/>
   <property name="move1" type="int" value="1"/>
   <property name="move2" type="int" value="1"/>
   <property name="move3" type="int" value="1"/>
@@ -24,7 +23,11 @@
 </data>
  </layer>
  <objectgroup id="2" name="objects">
-  <object id="2" type="player" gid="38" x="80" y="96" width="16" height="16"/>
+  <object id="2" type="player" gid="38" x="80" y="96" width="16" height="16">
+   <properties>
+    <property name="health" type="int" value="2"/>
+   </properties>
+  </object>
   <object id="3" type="pudding" gid="28" x="112" y="32" width="16" height="16"/>
   <object id="4" type="trap" gid="15" x="80" y="64" width="16" height="16"/>
   <object id="5" type="squar" gid="39" x="128" y="80" width="16" height="16">

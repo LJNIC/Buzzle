@@ -14,7 +14,6 @@ return {
     ["attack"] = 1,
     ["block"] = 2,
     ["disarm"] = 2,
-    ["health"] = 5,
     ["move1"] = 1,
     ["move2"] = 4,
     ["move3"] = 5,
@@ -80,7 +79,9 @@ return {
           rotation = 0,
           gid = 38,
           visible = true,
-          properties = {}
+          properties = {
+            ["health"] = 5
+          }
         },
         {
           id = 2,

@@ -12,7 +12,6 @@ return {
   nextobjectid = 6,
   properties = {
     ["attack"] = 1,
-    ["health"] = 1,
     ["move1"] = 1,
     ["move2"] = 1,
     ["move3"] = 1
@@ -77,7 +76,9 @@ return {
           rotation = 0,
           gid = 38,
           visible = true,
-          properties = {}
+          properties = {
+            ["health"] = 1
+          }
         },
         {
           id = 2,
