@@ -1,7 +1,7 @@
 return {
   version = "1.5",
   luaversion = "5.1",
-  tiledversion = "1.7.2",
+  tiledversion = "1.7.0",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 14,
@@ -9,16 +9,8 @@ return {
   tilewidth = 16,
   tileheight = 16,
   nextlayerid = 3,
-  nextobjectid = 13,
-  properties = {
-    ["attack"] = "1",
-    ["block"] = "1",
-    ["disarm"] = "1",
-    ["health"] = "2",
-    ["move1"] = "1",
-    ["move2"] = "1",
-    ["move3"] = "1"
-  },
+  nextobjectid = 9,
+  properties = {},
   tilesets = {
     {
       name = "tileset1",
@@ -83,7 +75,7 @@ return {
         {
           id = 2,
           name = "",
-          type = "squar",
+          type = "",
           shape = "rectangle",
           x = 96,
           y = 48,
@@ -93,14 +85,27 @@ return {
           gid = 39,
           visible = true,
           properties = {
-            ["damage"] = "2",
             ["direction"] = "up"
           }
         },
         {
+          id = 3,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 96,
+          y = 32,
+          width = 16,
+          height = 16,
+          rotation = 0,
+          gid = 48,
+          visible = true,
+          properties = {}
+        },
+        {
           id = 4,
           name = "",
-          type = "trap",
+          type = "",
           shape = "rectangle",
           x = 96,
           y = 64,
@@ -114,7 +119,7 @@ return {
         {
           id = 5,
           name = "",
-          type = "trap",
+          type = "",
           shape = "rectangle",
           x = 128,
           y = 64,
@@ -128,7 +133,7 @@ return {
         {
           id = 6,
           name = "",
-          type = "squar",
+          type = "",
           shape = "rectangle",
           x = 128,
           y = 96,
@@ -138,14 +143,13 @@ return {
           gid = 39,
           visible = true,
           properties = {
-            ["damage"] = "1",
             ["direction"] = "up"
           }
         },
         {
           id = 7,
           name = "",
-          type = "pudding",
+          type = "",
           shape = "rectangle",
           x = 96,
           y = 96,
@@ -157,24 +161,7 @@ return {
           properties = {}
         },
         {
-          id = 11,
-          name = "",
-          type = "squar",
-          shape = "rectangle",
-          x = 96,
-          y = 32,
-          width = 16,
-          height = 16,
-          rotation = 0,
-          gid = 49,
-          visible = true,
-          properties = {
-            ["damage"] = "2",
-            ["direction"] = "up"
-          }
-        },
-        {
-          id = 12,
+          id = 8,
           name = "",
           type = "",
           shape = "rectangle",

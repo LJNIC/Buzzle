@@ -10,16 +10,7 @@ return {
   tileheight = 16,
   nextlayerid = 3,
   nextobjectid = 27,
-  properties = {
-    ["attack"] = "1",
-    ["block"] = "2",
-    ["disarm"] = "2",
-    ["health"] = "5",
-    ["move1"] = "1",
-    ["move2"] = "4",
-    ["move3"] = "5",
-    ["push"] = "2"
-  },
+  properties = {},
   tilesets = {
     {
       name = "tileset1",
@@ -70,7 +61,7 @@ return {
         {
           id = 1,
           name = "",
-          type = "player",
+          type = "",
           shape = "rectangle",
           x = 48,
           y = 64,
@@ -84,7 +75,7 @@ return {
         {
           id = 2,
           name = "",
-          type = "pudding",
+          type = "",
           shape = "rectangle",
           x = 192,
           y = 80,
@@ -98,7 +89,7 @@ return {
         {
           id = 3,
           name = "",
-          type = "squar",
+          type = "",
           shape = "rectangle",
           x = 32,
           y = 48,
@@ -115,7 +106,7 @@ return {
         {
           id = 4,
           name = "",
-          type = "squar",
+          type = "",
           shape = "rectangle",
           x = 64,
           y = 80,
@@ -125,14 +116,13 @@ return {
           gid = 39,
           visible = true,
           properties = {
-            ["damage"] = "1",
             ["direction"] = "down"
           }
         },
         {
           id = 5,
           name = "",
-          type = "squar",
+          type = "",
           shape = "rectangle",
           x = 80,
           y = 32,
@@ -149,7 +139,7 @@ return {
         {
           id = 9,
           name = "",
-          type = "squar",
+          type = "",
           shape = "rectangle",
           x = 176,
           y = 48,
@@ -180,7 +170,7 @@ return {
         {
           id = 12,
           name = "",
-          type = "squar",
+          type = "",
           shape = "rectangle",
           x = 112,
           y = 96,
@@ -225,7 +215,7 @@ return {
         {
           id = 15,
           name = "",
-          type = "squar",
+          type = "",
           shape = "rectangle",
           x = 96,
           y = 64,
@@ -235,14 +225,13 @@ return {
           gid = 39,
           visible = true,
           properties = {
-            ["damage"] = "1",
             ["direction"] = "right"
           }
         },
         {
           id = 16,
           name = "",
-          type = "trap",
+          type = "",
           shape = "rectangle",
           x = 112,
           y = 48,
@@ -256,7 +245,7 @@ return {
         {
           id = 17,
           name = "",
-          type = "trap",
+          type = "",
           shape = "rectangle",
           x = 80,
           y = 80,
@@ -270,7 +259,7 @@ return {
         {
           id = 18,
           name = "",
-          type = "trap",
+          type = "",
           shape = "rectangle",
           x = 128,
           y = 96,
@@ -284,7 +273,7 @@ return {
         {
           id = 19,
           name = "",
-          type = "trap",
+          type = "",
           shape = "rectangle",
           x = 144,
           y = 64,
@@ -298,7 +287,7 @@ return {
         {
           id = 20,
           name = "",
-          type = "trap",
+          type = "",
           shape = "rectangle",
           x = 160,
           y = 80,
@@ -312,7 +301,7 @@ return {
         {
           id = 21,
           name = "",
-          type = "trap",
+          type = "",
           shape = "rectangle",
           x = 192,
           y = 48,
@@ -326,7 +315,7 @@ return {
         {
           id = 22,
           name = "",
-          type = "squar",
+          type = "",
           shape = "rectangle",
           x = 144,
           y = 32,

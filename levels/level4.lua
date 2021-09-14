@@ -9,15 +9,8 @@ return {
   tilewidth = 16,
   tileheight = 16,
   nextlayerid = 3,
-  nextobjectid = 8,
-  properties = {
-    ["attack"] = "1",
-    ["block"] = "1",
-    ["health"] = "2",
-    ["move1"] = "1",
-    ["move2"] = "1",
-    ["move3"] = "1"
-  },
+  nextobjectid = 7,
+  properties = {},
   tilesets = {
     {
       name = "tileset1",
@@ -96,7 +89,7 @@ return {
         {
           id = 4,
           name = "",
-          type = "trap",
+          type = "",
           shape = "rectangle",
           x = 80,
           y = 64,
@@ -110,7 +103,7 @@ return {
         {
           id = 5,
           name = "",
-          type = "squar",
+          type = "",
           shape = "rectangle",
           x = 128,
           y = 80,
@@ -120,12 +113,11 @@ return {
           gid = 39,
           visible = true,
           properties = {
-            ["damage"] = "2",
             ["direction"] = "left"
           }
         },
         {
-          id = 7,
+          id = 6,
           name = "",
           type = "",
           shape = "rectangle",
@@ -134,7 +126,7 @@ return {
           width = 16,
           height = 16,
           rotation = 0,
-          gid = 49,
+          gid = 48,
           visible = true,
           properties = {}
         }

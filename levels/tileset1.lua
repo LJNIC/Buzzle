@@ -26,6 +26,14 @@ return {
   tilecount = 80,
   tiles = {
     {
+      id = 14,
+      type = "trap"
+    },
+    {
+      id = 27,
+      type = "pudding"
+    },
+    {
       id = 36,
       animation = {
         {
@@ -69,6 +77,14 @@ return {
           duration = 100
         }
       }
+    },
+    {
+      id = 37,
+      type = "player"
+    },
+    {
+      id = 38,
+      type = "squar"
     }
   }
 }

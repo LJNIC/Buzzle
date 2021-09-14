@@ -12,7 +12,6 @@ return {
   nextobjectid = 6,
   properties = {
     ["attack"] = 1,
-    ["health"] = "1",
     ["move1"] = 1,
     ["move2"] = 1,
     ["move3"] = 1
@@ -105,7 +104,6 @@ return {
           gid = 39,
           visible = true,
           properties = {
-            ["damage"] = "1",
             ["direction"] = "left"
           }
         },
