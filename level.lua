@@ -3,6 +3,7 @@ local Tileset = require "tileset"
 local Player = require "entities.player"
 local Pudding = require "entities.pudding"
 local Squar = require "entities.squar"
+local Trap = require "entities.trap"
 
 local Level = Object:extend()
 Level.tile_types = { [0] = "floor", [1] = "wall", [2] = "goal", [3] = "border" }
@@ -36,6 +37,8 @@ function Level:new(filename)
             table.insert(self.puddings, Pudding(x, y))
         elseif objectType == "squar" then
             table.insert(self.objects, Squar(x, y, properties.damage, properties.direction))
+        elseif objectType == "trap" then
+            table.insert(self.objects, Trap(x, y))
         end
     end
 

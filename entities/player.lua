@@ -35,7 +35,7 @@ end
 
 function Player:damage(amount)
     if self.blocking < 1 then
-        self.health = self.health - amount
+        self.health = math.max(self.health - amount, 0)
         self.damaged = true
         self.damage = amount
         tick.delay(function() self.damaged = false end, 1)
