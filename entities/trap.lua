@@ -3,3 +3,5 @@ local Trap = Object:extend()
 
 function Trap:new(x, y)
 end
+
+return Trap

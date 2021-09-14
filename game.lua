@@ -6,7 +6,7 @@ local GameManager = require "game-manager"
 
 local game = {}
 interfaceScale = love.graphics.getWidth()/320
-local gameScale = 2
+local gameScale = 4
 
 function game:enter()
     GameManager:enter(1)
@@ -35,7 +35,7 @@ function game:draw()
     level:draw(GameManager.deck)
     interface:draw()
 
-    love.graphics.draw(level.canvas, love.graphics.getWidth()/2, love.graphics.getHeight()/3, 0, gameScale, gameScale, level.canvas:getWidth()/2, level.canvas:getHeight()/2)
+    love.graphics.draw(level.canvas, love.graphics.getWidth()/2, math.floor(love.graphics.getHeight() * 0.3), 0, gameScale, gameScale, level.canvas:getWidth()/2, level.canvas:getHeight()/2)
     love.graphics.draw(interface.canvas, 0, 0, 0, interfaceScale, interfaceScale)
 end
 
