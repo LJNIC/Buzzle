@@ -70,6 +70,7 @@ function interface:enter(deck, player)
     deckContainer:addChild(self.cardsContainer)
 
     self.healthIcons = {}
+    print(type(self.player.health))
     for i = 1, self.player.health do
         local healthRules = Rules.new()
             :addY((i - 1) * 9 + 2)

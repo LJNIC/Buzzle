@@ -8,7 +8,7 @@ Squar.damageTiles = {48, 49, 50}
 function Squar:new(x, y, damage, direction)
     Squar.super.new(self, x, y)
     self.direction = utilities.directions[direction]
-    self.damage = damage
+    self.damage = tonumber(damage)
     self.tileId = 39
 end
 

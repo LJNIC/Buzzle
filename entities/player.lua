@@ -6,8 +6,8 @@ local Player = Base:extend()
 function Player:new(x, y, health)
     Player.super.new(self, x, y)
     self.tileId = 38
-    self.health = health
-    self.maxHealth = health
+    self.health = tonumber(health)
+    self.maxHealth = tonumber(health)
     self.energy = 3
 end
 

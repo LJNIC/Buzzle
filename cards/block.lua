@@ -9,4 +9,4 @@ function Block:new(count)
     return card
 end
 
-return block
+return Block
