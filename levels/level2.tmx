@@ -5,7 +5,7 @@
  </editorsettings>
  <properties>
   <property name="attack" type="int" value="1"/>
-  <property name="health" type="int" value="1"/>
+  <property name="health" value="1"/>
   <property name="move1" type="int" value="1"/>
   <property name="move2" type="int" value="1"/>
   <property name="move3" type="int" value="1"/>
