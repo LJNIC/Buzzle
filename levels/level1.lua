@@ -19,7 +19,8 @@ return {
     {
       name = "tileset1",
       firstgid = 1,
-      filename = "tileset1.tsx"
+      filename = "tileset1.tsx",
+      exportfilename = "tileset1.lua"
     }
   },
   layers = {
@@ -74,7 +75,9 @@ return {
           rotation = 0,
           gid = 38,
           visible = true,
-          properties = {}
+          properties = {
+            ["health"] = "1"
+          }
         },
         {
           id = 7,

@@ -9,13 +9,20 @@ return {
   tilewidth = 16,
   tileheight = 16,
   nextlayerid = 3,
-  nextobjectid = 31,
-  properties = {},
+  nextobjectid = 32,
+  properties = {
+    ["attack"] = 1,
+    ["health"] = 2,
+    ["move1"] = 1,
+    ["move2"] = 1,
+    ["move3"] = 1
+  },
   tilesets = {
     {
       name = "tileset1",
       firstgid = 1,
-      filename = "tileset1.tsx"
+      filename = "tileset1.tsx",
+      exportfilename = "tileset1.lua"
     }
   },
   layers = {
@@ -38,10 +45,10 @@ return {
       data = {
         55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55,
         55, 55, 55, 55, 55, 31, 31, 31, 31, 55, 55, 55, 55, 55,
-        55, 55, 55, 55, 55, 31, 41, 31, 31, 52, 55, 55, 55, 55,
+        55, 55, 55, 55, 55, 31, 31, 31, 31, 52, 55, 55, 55, 55,
         55, 55, 55, 55, 55, 31, 31, 31, 31, 31, 55, 55, 55, 55,
-        55, 55, 55, 55, 55, 31, 31, 31, 41, 41, 52, 55, 55, 55,
-        55, 55, 55, 55, 55, 41, 41, 41, 55, 55, 55, 55, 55, 55,
+        55, 55, 55, 55, 55, 31, 31, 31, 31, 41, 52, 55, 55, 55,
+        55, 55, 55, 55, 55, 41, 41, 41, 41, 55, 55, 55, 55, 55,
         55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55
       }
     },
@@ -85,7 +92,8 @@ return {
           gid = 39,
           visible = true,
           properties = {
-            ["direction"] = "down"
+            ["damage"] = 1,
+            ["direction"] = "up"
           }
         },
         {
@@ -93,15 +101,16 @@ return {
           name = "",
           type = "squar",
           shape = "rectangle",
-          x = 96,
-          y = 80,
+          x = 112,
+          y = 64,
           width = 16,
           height = 16,
           rotation = 0,
           gid = 39,
           visible = true,
           properties = {
-            ["direction"] = "up"
+            ["damage"] = 1,
+            ["direction"] = "left"
           }
         },
         {
@@ -110,20 +119,6 @@ return {
           type = "",
           shape = "rectangle",
           x = 96,
-          y = 64,
-          width = 16,
-          height = 16,
-          rotation = 0,
-          gid = 48,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 28,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 128,
           y = 64,
           width = 16,
           height = 16,
@@ -143,6 +138,20 @@ return {
           height = 16,
           rotation = 0,
           gid = 28,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 31,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 128,
+          y = 32,
+          width = 16,
+          height = 16,
+          rotation = 0,
+          gid = 48,
           visible = true,
           properties = {}
         }
