@@ -1,15 +1,12 @@
 local Card = require "cards.card"
 
-local push = Card:extend()
+local Push = Card:extend()
 
-
-function push:new(count)
-    local card = push.super.new(self, count)
+function Push:new(count)
+    local card = Push.super.new(self, count)
     card.id = "push"
+    card.image = love.graphics.newImage("assets/cards/push.png")
     return card
 end
 
-
-
-
-return push
+return Push

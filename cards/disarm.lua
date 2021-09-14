@@ -1,15 +1,12 @@
 local Card = require "cards.card"
 
-local disarm = Card:extend()
+local Disarm = Card:extend()
 
-
-function disarm:new(count)
-    local card = disarm.super.new(self, count)
+function Disarm:new(count)
+    local card = Disarm.super.new(self, count)
     card.id = "disarm"
+    card.image = love.graphics.newImage("assets/cards/disarm.png")
     return card
 end
 
-
-
-
-return disarm
+return Disarm

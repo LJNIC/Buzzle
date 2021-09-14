@@ -1,15 +1,12 @@
 local Card = require "cards.card"
 
-local block = Card:extend()
+local Block = Card:extend()
 
-
-function block:new(count)
-    local card = block.super.new(self, count)
+function Block:new(count)
+    local card = Block.super.new(self, count)
     card.id = "block"
+    card.image = love.graphics.newImage("assets/cards/block.png")
     return card
 end
-
-
-
 
 return block
