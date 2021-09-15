@@ -24,7 +24,7 @@ function game:getMouse()
     local width, height = love.graphics.getDimensions()
     local level = GameManager.level
     x = (x - width / 2) / gameScale + level.canvas:getWidth() / 2
-    y = (y - height / 3) / gameScale + level.canvas:getHeight() / 2
+    y = (y - height * 0.3) / gameScale + level.canvas:getHeight() / 2
     return x, y
 end
 
