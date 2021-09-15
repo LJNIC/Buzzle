@@ -1,7 +1,7 @@
 local Card = require "cards.card"
 
 local Block = Card:extend()
-Block.targets = {Vec2(0, 0)}
+Block.targets = sequence{Vec2(0, 0)}
 
 function Block:new(count)
     local card = Block.super.new(self, count)

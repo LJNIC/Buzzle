@@ -16,7 +16,7 @@ end
 
 function Trap:attack(level)
     local object = level:objectAt(self.position)
-    if object then
+    if object ~= self then
         object:damage(self.damage)
     end
 end

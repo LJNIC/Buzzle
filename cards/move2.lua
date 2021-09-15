@@ -2,7 +2,7 @@ local Card = require "cards.card"
 local utilities = require "utilities"
 
 local Move2 = Card:extend()
-Move2.targets = functional.map(table.values(utilities.directions), function(v) return v * 2 end)
+Move2.targets = sequence(table.values(utilities.directions)):map(function(v) return v * 2 end)
 
 function Move2:new(count)
     local card = Move2.super.new(self, count)

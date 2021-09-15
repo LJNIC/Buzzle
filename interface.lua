@@ -70,7 +70,6 @@ function interface:enter(deck, player)
     deckContainer:addChild(self.cardsContainer)
 
     self.healthIcons = {}
-    print(type(self.player.health))
     for i = 1, self.player.health do
         local healthRules = Rules.new()
             :addY((i - 1) * 9 + 2)
@@ -87,7 +86,6 @@ end
 
 function interface:updateHealth()
     local player = self.player
-    --if player.health == player.maxHealth then return end
 
     for i = player.maxHealth, player.health + 1, -1 do
         self.healthIcons[i].full = false

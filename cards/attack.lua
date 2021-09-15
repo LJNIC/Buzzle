@@ -1,8 +1,9 @@
 local Card = require "cards.card"
+local Squar = require "entities.squar"
 local utilities = require "utilities"
 
 local Attack = Card:extend()
-Attack.targets = table.values(utilities.directions)
+Attack.targets = sequence(table.values(utilities.directions))
 
 function Attack:new(count)
     local card = Attack.super.new(self, count)
@@ -12,11 +13,9 @@ end
 
 function Attack:use(level, position)
     level.player:attack(position)
-    for _,object in ipairs(level.objects) do
-        if object.position == position then
-            object.alive = false
-            return
-        end
+    local object = level:objectAt(position)
+    if object and object:is(Squar) then
+        object.alive = false
     end
 end
 

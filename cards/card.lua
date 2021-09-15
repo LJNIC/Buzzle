@@ -64,7 +64,7 @@ end
 
 function Card:validatedTargets(level)
     local player = level.player.position
-    local targets = functional.map(self.targets, function(v) return player + v end)
+    local targets = self.targets:map(function(v) return player + v end)
     local i = 1
     return functional.filter(targets, function(target)
         local direction = self.targets[i]:orthogonal()

@@ -31,12 +31,12 @@ function Deck:selectCard(index, level)
     self.active = self.cards[index]
     for _, card in ipairs(self.cards) do card.selected = false end
     self.active.selected = true
-    self.targets = self.active:validatedTargets(level)
+    self.targets = sequence(self.active:validatedTargets(level))
 end
 
 function Deck:isTargeting(x, y)
     if self.targets == nil then return false end
-    return functional.any(self.targets, function(v) return v.x == x and v.y == y end)
+    return self.targets:any(function(v) return v.x == x and v.y == y end)
 end
 
 function Deck:useCard(level, position)

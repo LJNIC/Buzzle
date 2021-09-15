@@ -2,6 +2,8 @@ local tick = require "lib.tick"
 local Level = require "level"
 local Deck = require "deck"
 local interface = require "interface"
+local filters = require "filters"
+
 local GameManager = {}
 
 GameManager.levels = {}
@@ -10,7 +12,7 @@ local level_count = functional.count(love.filesystem.getDirectoryItems("levels")
 end) 
 
 for i = 1, level_count do
-    table.insert(GameManager.levels, Level("levels.level" .. i))
+    table.insert(GameManager.levels, Level("levels.biglvl"))
 end
 
 function GameManager:enter(levelNumber)
@@ -21,12 +23,12 @@ function GameManager:enter(levelNumber)
 end
 
 function GameManager:checkWin()
-    for _,pudding in ipairs(self.level.puddings) do
-        if pudding.alive then
-            return
-        end
-    end
+    local pudding = self.level.puddings
+        :find_match(filters.alive)
+    -- if a pudding is still alive, we haven't won
+    if pudding then return end
 
+    print("hello")
     tick.delay(function() self:enter(self.levelNumber + 1) end, 0.3)
 end
 
@@ -41,7 +43,7 @@ function GameManager:useCard()
 
     local level = self.level
     local tile = level.active
-    if functional.any(self.deck.targets, function(v) return v.x == tile.x and v.y == tile.y end) then
+    if self.deck.targets:any(filters.equal(tile)) then
         self.deck:useCard(level, tile)
     else
         return
@@ -54,11 +56,16 @@ end
 function GameManager:doTurn()
     local level = self.level
 
-    for _,enemy in ipairs(functional.filter(level.objects, function(o) return o.alive end)) do
-        enemy:attack(level)
-    end
+    level.objects
+        :filter(function(object) return level:isVoid(object) end)
+        :foreach(function(object) object.alive = false end)
 
-    local pudding = functional.find_match(level.puddings, function(p) return p.position == level.player.position end)
+    level.objects
+        :filter(filters.alive)
+        :foreach(function(object) object:attack(level) end)
+
+    local pudding = level.puddings
+        :find_match(function(p) return p.position == level.player.position end)
     if pudding then pudding.alive = false end
 
     interface:updateHealth()

@@ -4,6 +4,7 @@ local Player = require "entities.player"
 local Pudding = require "entities.pudding"
 local Squar = require "entities.squar"
 local Trap = require "entities.trap"
+local filters = require "filters"
 
 local Level = Object:extend()
 Level.tile_types = { [0] = "floor", [1] = "wall", [2] = "goal", [3] = "border" }
@@ -22,8 +23,8 @@ function Level:new(filename)
 
     self.tiles = tile_layer.data
 
-    self.objects = {}
-    self.puddings = {}
+    self.objects = sequence{}
+    self.puddings = sequence{}
     for _,object in ipairs(object_layer.objects) do
         local properties = object.properties
         local x, y = (object.x / TILE_WIDTH) + 1, object.y / TILE_WIDTH
@@ -34,11 +35,11 @@ function Level:new(filename)
         if objectType == "player" then
             self.player = Player(x, y, properties.health)
         elseif objectType == "pudding" then
-            table.insert(self.puddings, Pudding(x, y))
+            self.puddings:push(Pudding(x, y))
         elseif objectType == "squar" then
-            table.insert(self.objects, Squar(x, y, properties.damage, properties.direction))
+            self.objects:push(Squar(x, y, properties.damage, properties.direction))
         elseif objectType == "trap" then
-            table.insert(self.objects, Trap(x, y))
+            self.objects:push(Trap(x, y))
         end
     end
 
@@ -93,17 +94,8 @@ function Level:draw(deck)
         end
     end
 
-    for _,object in ipairs(self.objects) do
-        if object.alive then
-            object:draw()
-        end
-    end
-
-    for _,pudding in ipairs(self.puddings) do
-        if pudding.alive then
-            pudding:draw()
-        end
-    end
+    self.objects:foreach(filters.draw)
+    self.puddings:foreach(filters.draw)
 
     self.player:draw()
     love.graphics.setCanvas()
@@ -116,17 +108,21 @@ function Level:objectAt(vecOrX, y)
     if self.player.position.x == x and self.player.position.y == y then
         return self.player
     else
-        return functional.find_match(self.objects, function(o) return o.x == x and o.y == y end)
+        return self.objects:find_match(function(o) return o.position.x == x and o.position.y == y end)
     end
 end
 
 function Level:isWalkable(vecOrX, y)
-    for _,object in ipairs(self.objects) do
-        if object.alive and object.position:equal(vecOrX, y) and object:is(Squar) then
-            return false
-        end
-    end
-    return self:tileAt(vecOrX, y) == 31
+    local object = self.objects
+        :filter(filters.alive)
+        :filter(function(o) return o:is(Squar) and o.position:equal(vecOrX, y) end)
+
+    return object and self:tileAt(vecOrX, y) == 31
+end
+
+function Level:isVoid(basePositionX, y)
+    local tile = self:tileAt(basePositionX, y)
+    return tile == 51 or tile == 41
 end
 
 function Level:tileAt(base_position_x, y)
