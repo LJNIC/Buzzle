@@ -70,7 +70,7 @@ function GameManager:doTurn()
     interface:updateHealth()
 
     if level.player.blocking > 0 then
-        level.player.blocking = level.player.blocking - 1
+        level.player.blocking = level.player.blocking - 100
     end
 
     tick.delay(function() GameManager:checkWin() end, 0.2)
