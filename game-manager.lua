@@ -55,7 +55,7 @@ function GameManager:useCard()
     end
 
     -- if we played a card, play out a turn
-    tick.delay(function() GameManager:doTurn() end, 0.2)
+    tick.delay(function() GameManager:doTurn() end, 0.6)
 end
 
 function GameManager:doTurn()

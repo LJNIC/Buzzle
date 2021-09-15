@@ -98,7 +98,9 @@ function Level:draw(deck)
     self.objects:foreach(filters.draw)
     self.puddings:foreach(filters.draw)
 
-    self.player:draw()
+    if self.player.alive then
+        self.player:draw()
+    end
     love.graphics.setCanvas()
 end
 

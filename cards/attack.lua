@@ -15,7 +15,7 @@ function Attack:use(level, position)
     level.player:attack(position)
     local object = level:objectAt(position)
     if object and object:is(Squar) then
-        object.alive = false
+        object:hurt(1)
     end
 end
 

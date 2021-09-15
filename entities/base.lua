@@ -1,19 +1,41 @@
 local Object = require "lib.classic"
+local tick = require "lib.tick"
 local flux = require "lib.flux"
 local utilities = require "utilities"
 local filters = require "filters"
 local convertToDrawn = utilities.convertToDrawn
 
 local Base = Object:extend()
+local font = love.graphics.newFont("assets/SinsGold.ttf", 16)
 
 function Base:new(x, y)
     self.position = Vec2(x, y)
     self.drawnPosition = convertToDrawn(self.position)
     self.moving = false
     self.alive = true
+    self.damaged = false
+    self.damagedAmount = nil
 end
 
-function Base:tick()
+function Base:draw()
+    local drawn = self.drawnPosition
+    if self.damaged then
+        love.graphics.push("all")
+        love.graphics.setColor(1, 0, 0)
+        love.graphics.setFont(font)
+        love.graphics.print("-" .. self.damagedAmount, drawn.x + TILE_WIDTH/4, drawn.y - TILE_WIDTH + 2)
+        love.graphics.pop()
+    end
+end
+
+function Base:hurt(amount)
+    self.health = math.max(self.health - amount, 0)
+    self.damaged = true
+    self.damagedAmount = amount
+    tick.delay(function() 
+        self.damaged = false
+        self.alive = self.health > 0
+    end, 0.5)
 end
 
 function Base:move(newPosition, level)

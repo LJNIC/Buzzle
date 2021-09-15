@@ -18,12 +18,14 @@ end
 
 function Push:use(level, position)
     local object = level:objectAt(position)
+    if not object then return end
     local player = level.player
 
     if object:is(Squar) then
-        local pushTo = (position - level.player.position) + position
+        local pushTo = (position - player.position) + position
         local atPushTo = level:objectAt(pushTo)
         if atPushTo and atPushTo:is(Squar) then return end
+
         object:move(pushTo, level)
         player:move(position, level)
     end
