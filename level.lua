@@ -115,7 +115,7 @@ end
 function Level:isWalkable(vecOrX, y)
     local object = self.objects
         :filter(filters.alive)
-        :filter(function(o) return o:is(Squar) and o.position:equal(vecOrX, y) end)
+        :any(function(o) return o:is(Squar) and o.position:equal(vecOrX, y) end)
 
     return object and self:tileAt(vecOrX, y) == 31
 end
