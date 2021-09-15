@@ -1,6 +1,8 @@
 local Object = require "lib.classic"
 local flux = require "lib.flux"
-local convertToDrawn = require("utilities").convertToDrawn
+local utilities = require "utilities"
+local filters = require "filters"
+local convertToDrawn = utilities.convertToDrawn
 
 local Base = Object:extend()
 
@@ -14,7 +16,7 @@ end
 function Base:tick()
 end
 
-function Base:move(newPosition)
+function Base:move(newPosition, level)
     if self.position == newPosition then return end
 
     local drawn = convertToDrawn(newPosition)
@@ -23,8 +25,26 @@ function Base:move(newPosition)
         self.drawnPosition = drawn
     end
 
+    local between = utilities.between(self.position, newPosition)
+        :filter(function(v) 
+            local o = level:objectAt(v)
+            return o and o.alive and o:is(require "entities.trap")
+        end)
+
+    local distance = self.position:distance(newPosition)
+
     self.position = newPosition
-    flux.to(self.drawnPosition, 0.2, {x = drawn.x, y = drawn.y}):oncomplete(function() self.moving = false end)
+    local tween = flux.to(self.drawnPosition, 0.4, {x = drawn.x, y = drawn.y})
+        :oncomplete(function() self.moving = false end)
+        :onupdate(function() 
+            local real = utilities.convertToReal(self.drawnPosition)
+            local v, i = between:find_match(filters.equal(real))
+            if v then
+                self:damage(3)
+                table.remove(between, i)
+            end
+        end)
+
     self.moving = true
 end
 
@@ -48,10 +68,6 @@ function Base:copy()
     local copy = Base(self.position.x, self.position.y)
     copy.alive = self.alive
     return copy
-end
-
-function Base:__tostring()
-    return self.position:__tostring()
 end
 
 return Base

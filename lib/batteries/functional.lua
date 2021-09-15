@@ -423,7 +423,7 @@ function functional.find_match(t, f)
 	for i = 1, #t do
 		local v = t[i]
 		if f(v) then
-			return v
+			return v, i
 		end
 	end
 	return nil

@@ -1,7 +1,6 @@
 local Plan = require "lib.plan"
 local Rules = Plan.Rules
 local Container = Plan.Container
-local Object = require "lib.classic"
 
 local Card = Container:extend()
 local font = love.graphics.newFont("assets/SinsGold.ttf", 16)
@@ -55,6 +54,8 @@ function Card:update(dt)
     end
 end
 
+local utilities = require "utilities"
+
 function Card:use(level, position)
 end
 
@@ -65,20 +66,11 @@ end
 function Card:validatedTargets(level)
     local player = level.player.position
     local targets = self.targets:map(function(v) return player + v end)
-    local i = 1
+
     return functional.filter(targets, function(target)
-        local direction = self.targets[i]:orthogonal()
-        i = i + 1
-
-        if not self:validPosition(level, target) then return false end
-
-        local checking = player + direction
-        while checking ~= target do
-            if not self:validPosition(level, checking) then return false end
-            checking:adds(direction.x, direction.y)
-        end
-
-        return true
+        return utilities.between(player, target):any(function(v)
+            return self:validPosition(level, v)
+        end)
     end)
 end
 

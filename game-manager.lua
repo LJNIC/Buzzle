@@ -12,7 +12,7 @@ local level_count = functional.count(love.filesystem.getDirectoryItems("levels")
 end) 
 
 for i = 1, level_count do
-    table.insert(GameManager.levels, Level("levels.biglvl"))
+    table.insert(GameManager.levels, Level("levels.level" .. i))
 end
 
 function GameManager:enter(levelNumber)
@@ -28,7 +28,6 @@ function GameManager:checkWin()
     -- if a pudding is still alive, we haven't won
     if pudding then return end
 
-    print("hello")
     tick.delay(function() self:enter(self.levelNumber + 1) end, 0.3)
 end
 

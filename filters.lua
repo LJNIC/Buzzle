@@ -1,7 +1,6 @@
 local filters = {}
 
 function filters.alive(object)
-    print(object.alive)
     return object.alive
 end
 
@@ -22,7 +21,9 @@ function filters.equal(a)
 end
 
 function filters.draw(object)
-    object:draw()
+    if object.alive then
+        object:draw()
+    end
 end
 
 return filters

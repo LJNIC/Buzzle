@@ -315,7 +315,7 @@ end
 -- () -> self
 function vec:floor()
   self.x = floor(self.x)
-  self.y = floor(self.x)
+  self.y = floor(self.y)
   return self
 end
 

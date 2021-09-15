@@ -12,7 +12,7 @@ function Move3:new(count)
 end
 
 function Move3:use(level, position)
-    level.player:move(position)
+    level.player:move(position, level)
 end
 
 return Move3

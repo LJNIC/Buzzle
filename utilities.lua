@@ -7,5 +7,23 @@ function utilities.convertToDrawn(position)
     return (position + offset) * TILE_WIDTH
 end
 
+function utilities.convertToReal(drawn)
+    return ((drawn / TILE_WIDTH) - offset):floor()
+end
+
+function utilities.between(a, b)
+    local distance = a:distance(b)
+    if distance == 0 then return {} end
+
+    local direction = (b - a):orthogonal()
+    local positions = sequence{}
+
+    for i = 1, distance do
+        positions:push(a + (i * direction)) 
+    end
+
+    return positions
+end
+
 return utilities
 
