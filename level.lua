@@ -117,7 +117,7 @@ function Level:isWalkable(vecOrX, y)
         :filter(filters.alive)
         :any(function(o) return o:is(Squar) and o.position:equal(vecOrX, y) end)
 
-    return object and self:tileAt(vecOrX, y) == 31
+    return not object and self:tileAt(vecOrX, y) == 31
 end
 
 function Level:isVoid(basePositionX, y)
