@@ -27,8 +27,10 @@ end
 
 function Player:hurt(amount)
     if self.blocking < 1 then
-        print("hello")
+        self.blocking = self.blocking - 1
         Player.super.hurt(self, amount)
+    else
+        self.blocking = self.blocking - 1
     end
 end
 
