@@ -34,51 +34,6 @@ return {
       type = "pudding"
     },
     {
-      id = 36,
-      animation = {
-        {
-          tileid = 11,
-          duration = 100
-        },
-        {
-          tileid = 11,
-          duration = 100
-        },
-        {
-          tileid = 11,
-          duration = 100
-        },
-        {
-          tileid = 11,
-          duration = 100
-        },
-        {
-          tileid = 12,
-          duration = 100
-        },
-        {
-          tileid = 12,
-          duration = 100
-        },
-        {
-          tileid = 12,
-          duration = 100
-        },
-        {
-          tileid = 12,
-          duration = 100
-        },
-        {
-          tileid = 12,
-          duration = 100
-        },
-        {
-          tileid = 12,
-          duration = 100
-        }
-      }
-    },
-    {
       id = 37,
       type = "player"
     },
