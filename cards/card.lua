@@ -67,8 +67,9 @@ function Card:validatedTargets(level)
     local player = level.player.position
     local targets = self.targets:map(function(v) return player + v end)
 
-    return functional.filter(targets, function(target)
-        return utilities.between(player, target):any(function(v)
+ return functional.filter(targets, function(target)
+        local between = utilities.between(player, target)
+        return #between == 0 or between:any(function(v)
             return self:validPosition(level, v)
         end)
     end)
