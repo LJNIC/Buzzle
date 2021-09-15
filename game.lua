@@ -47,6 +47,8 @@ function game:keypressed(key)
         gameScale = gameScale - 1
     elseif key == "n" then
         GameManager:enter(GameManager.levelNumber + 1)
+    elseif key == "r" then
+        GameManager:reload()
     end
 
     local number = numbers[key]

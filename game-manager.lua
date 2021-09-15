@@ -22,6 +22,12 @@ function GameManager:enter(levelNumber)
     interface:enter(self.deck, self.level.player)
 end
 
+function GameManager:reload()
+    self.level = Level("levels.level" .. self.levelNumber)
+    self.deck = Deck(self.level.cards, self.level.player)
+    interface:enter(self.deck, self.level.player)
+end
+
 function GameManager:checkWin()
     local pudding = self.level.puddings
         :find_match(filters.alive)

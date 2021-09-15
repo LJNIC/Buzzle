@@ -25,7 +25,7 @@ function Squar:draw()
     Tileset:drawTile(self.tileId, drawn.x, drawn.y)
 end
 
-function Squar:damage(amount)
+function Squar:hurt(amount)
     self.alive = false
 end
 
@@ -34,7 +34,7 @@ function Squar:attack(level)
     Squar.super.attack(self, attackPosition)
     local object = level:objectAt(attackPosition)
     if object then
-        object:damage(self.damage)      
+        object:hurt(self.damage)      
     end
 end
 

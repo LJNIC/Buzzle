@@ -33,7 +33,7 @@ function Player:draw()
     end
 end
 
-function Player:damage(amount)
+function Player:hurt(amount)
     if self.blocking < 1 then
         self.health = math.max(self.health - amount, 0)
         self.damaged = true
