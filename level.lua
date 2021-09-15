@@ -68,6 +68,7 @@ end
 
 function Level:draw(deck)
     love.graphics.setCanvas(self.canvas)
+    love.graphics.clear()
     for y = 1, self.height do
         for x = 1, self.width do
             local t = self:tileAt(x, y)
