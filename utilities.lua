@@ -13,7 +13,7 @@ end
 
 function utilities.between(a, b)
     local distance = a:distance(b)
-    if distance == 0 then return sequence{} end
+    if distance == 0 then return {} end
 
     local direction = (b - a):orthogonal()
     local positions = sequence{}
