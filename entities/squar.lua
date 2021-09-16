@@ -18,12 +18,16 @@ function Squar:move(newPosition, level)
     self.attackPosition = utilities.convertToDrawn(self.position + self.direction)
 end
 
+function Squar:drawTarget()
+    if self.health > 0 and not self.attacking and not self.moving then
+        local drawn = self.drawnPosition
+        Tileset:drawTile(Squar.damageTiles[self.damage], drawn.x + self.direction.x * TILE_WIDTH, drawn.y + self.direction.y * TILE_WIDTH)
+    end
+end
+
 function Squar:draw()
-    local drawn = self.drawnPosition
     if self.health > 0 then
-        if not self.attacking and not self.moving then
-            Tileset:drawTile(Squar.damageTiles[self.damage], drawn.x + self.direction.x * TILE_WIDTH, drawn.y + self.direction.y * TILE_WIDTH)
-        end
+        local drawn = self.drawnPosition
         Tileset:drawTile(self.tileId, drawn.x, drawn.y)
     end
     Squar.super.draw(self)

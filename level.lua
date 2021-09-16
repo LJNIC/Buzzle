@@ -85,6 +85,10 @@ function Level:draw(deck)
         end
     end
 
+    for _,object in ipairs(self.objects) do
+        if object.alive and not object:is(Trap) then object:drawTarget() end
+    end
+
     self:drawTargets(deck)
 
     for _,object in ipairs(self.objects) do
