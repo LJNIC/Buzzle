@@ -4,6 +4,7 @@ local utilities = require "utilities"
 
 local Attack = Card:extend()
 Attack.targets = sequence(table.values(utilities.directions))
+Attack.highlights = {top = 37, edge = 47, confirm = 69, cedge = 79}
 
 function Attack:new(count)
     local card = Attack.super.new(self, count)

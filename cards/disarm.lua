@@ -4,6 +4,7 @@ local directions = require("utilities").directions
 
 local Disarm = Card:extend()
 Disarm.targets = sequence(table.values(directions))
+Disarm.highlights = {top = 67, edge = 77, confirm = 68, cedge = 78}
 
 function Disarm:new(count)
     local card = Disarm.super.new(self, count)

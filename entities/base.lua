@@ -62,7 +62,7 @@ function Base:move(newPosition, level)
             local real = utilities.convertToReal(self.drawnPosition)
             local v, i = between:find_match(filters.equal(real))
             if v then
-                self:hurt(3)
+                self:hurt(3, true)
                 table.remove(between, i)
             end
         end)

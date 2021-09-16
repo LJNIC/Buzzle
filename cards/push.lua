@@ -4,6 +4,7 @@ local directions = require("utilities").directions
 
 local Push = Card:extend()
 Push.targets = sequence(table.values(directions))
+Push.highlights = {top = 37, edge = 47, confirm = 69, cedge = 79}
 
 function Push:new(count)
     local card = Push.super.new(self, count)

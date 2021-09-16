@@ -27,6 +27,10 @@ function Tileset:drawTile(id, x, y)
     love.graphics.draw(self.image, self.quads[id], x, y)
 end
 
+function Tileset:drawAtPosition(id, x, y)
+    love.graphics.draw(self.image, self.quads[id], x * TILE_WIDTH - TILE_WIDTH, y * TILE_WIDTH - TILE_WIDTH)
+end
+
 function Tileset:getProperties(type, properties)
     if self.entities[type] then
         return table.overlay(self.entities[type], properties)

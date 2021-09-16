@@ -38,6 +38,10 @@ function Card:draw()
     love.graphics.print("x" .. tostring(self.count), self.x + 12, self.y + 44)
 end
 
+function Card:getHighlight(active, edge)
+    return active and (edge and self.highlights.cedge or self.highlights.confirm) or (edge and self.highlights.edge or self.highlights.top)
+end
+
 function Card:update(dt)
     if self.count < 1 then
         self.hovered = false

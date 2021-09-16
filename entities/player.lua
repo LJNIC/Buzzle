@@ -25,8 +25,8 @@ function Player:draw()
     Player.super.draw(self)
 end
 
-function Player:hurt(amount)
-    if self.blocking < 1 then
+function Player:hurt(amount, through)
+    if self.blocking < 1 or through then
         self.blocking = self.blocking - 1
         Player.super.hurt(self, amount)
     else

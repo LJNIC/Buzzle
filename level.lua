@@ -71,37 +71,42 @@ function Level:draw(deck)
     love.graphics.clear()
     for y = 1, self.height do
         for x = 1, self.width do
-            local t = self:tileAt(x, y)
-            local drawX, drawY = (x - 1) * TILE_WIDTH, (y - 1) * TILE_WIDTH
-
-            Tileset:drawTile(t, drawX, drawY)
-            if t == 31 and deck:isTargeting(x, y) then
-                if self:isActive(x, y) then
-                    Tileset:drawTile(68, drawX, drawY)
-                else
-                    Tileset:drawTile(17, drawX, drawY)
-                end
-            end
-
-            if t == 41 and deck:isTargeting(x, y - 1) then
-                if self:isActive(x, y - 1) then
-                    Tileset:drawTile(78, drawX, drawY)
-                else
-                    Tileset:drawTile(27, drawX, drawY)
-                end
-            end
-
-            love.graphics.setColor(1, 1, 1)
+            Tileset:drawAtPosition(self:tileAt(x, y), x, y)
         end
     end
 
-    self.objects:foreach(filters.draw)
+    for _,object in ipairs(self.objects) do
+        if object:is(Trap) then object:draw() end
+    end
+
+    self:drawTargets(deck)
+
+    for _,object in ipairs(self.objects) do
+        if not object:is(Trap) then object:draw() end
+    end
+
     self.puddings:foreach(filters.draw)
 
     if self.player.alive then
         self.player:draw()
     end
     love.graphics.setCanvas()
+end
+
+function Level:drawTargets(deck)
+    if not deck.active then return end
+
+    for _,target in ipairs(deck.targets) do
+        local t = self:tileAt(target)
+        local active = self:isActive(target.x, target.y)
+        local edge = self:tileAt(target.x, target.y + 1) == 41
+
+        Tileset:drawAtPosition(deck.active:getHighlight(active, false), target.x, target.y)
+        if edge then
+            Tileset:drawAtPosition(deck.active:getHighlight(active, true), target.x, target.y + 1)
+        end
+    end
+
 end
 
 function Level:objectAt(vecOrX, y)
