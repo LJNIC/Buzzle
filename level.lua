@@ -76,13 +76,19 @@ function Level:draw(deck)
     end
 
     for _,object in ipairs(self.objects) do
-        if object:is(Trap) then object:draw() end
+        if object:is(Trap) then 
+            if object.alive then
+                object:draw() 
+            else
+                Tileset:drawAtPosition(35, object.position.x, object.position.y)
+            end
+        end
     end
 
     self:drawTargets(deck)
 
     for _,object in ipairs(self.objects) do
-        if not object:is(Trap) then object:draw() end
+        if object.alive and not object:is(Trap) then object:draw() end
     end
 
     self.puddings:foreach(filters.draw)
