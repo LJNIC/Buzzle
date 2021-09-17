@@ -47,6 +47,8 @@ function Base:move(newPosition, level)
         self.drawnPosition = drawn
     end
 
+    self.moving = true
+
     local between = utilities.between(self.position, newPosition)
         :filter(function(v) 
             local o = level:objectAt(v)
@@ -66,8 +68,6 @@ function Base:move(newPosition, level)
                 table.remove(between, i)
             end
         end)
-
-    self.moving = true
 end
 
 function Base:attack(position)
@@ -81,14 +81,16 @@ function Base:attack(position)
     end)
 end
 
-function Base:undo(other)
-    self:move(other.position)
+function Base:undo(other, level)
+    self:move(other.position, level)
     self.alive = other.alive
+    self.health = other.health
 end
 
 function Base:copy()
     local copy = Base(self.position.x, self.position.y)
     copy.alive = self.alive
+    copy.health = self.health
     return copy
 end
 

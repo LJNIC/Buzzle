@@ -45,8 +45,33 @@ function Level:new(filename)
 
     self.cards = level_data.properties
 
+    self.stack = sequence{{ player = self.player, objects = self.objects, puddings = self.puddings }}
+
     self.active = Vec2(-1, -1)
     self.activeValid = false
+end
+
+function Level:save()
+    self.saved_state = { player = self.player:copy(), objects = table.copy(self.objects, true), puddings = table.copy(self.puddings, true) }
+end
+
+function Level:push()
+    self.stack:push(self.saved_state)
+end
+
+function Level:undo()
+    local top = self.stack:pop()
+
+    if top then
+        self.player:move(top.player.position, self)
+        for i, object in ipairs(self.objects) do
+            object:undo(top.objects[i], self)
+        end
+
+        for i, pudding in ipairs(self.puddings) do
+            pudding:undo(top.puddings[i], self)
+        end
+    end
 end
 
 function Level:update(dt, x, y)

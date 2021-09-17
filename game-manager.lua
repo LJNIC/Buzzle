@@ -28,13 +28,26 @@ function GameManager:reload()
     interface:enter(self.deck, self.level.player)
 end
 
+function GameManager:undo()
+    if not self.turnInProgress then
+        self.deck:undo()
+        self.level:undo()
+    end
+end
+
 function GameManager:checkWin()
     local pudding = self.level.puddings
         :find_match(filters.alive)
     -- if a pudding is still alive, we haven't won
-    if pudding then return end
+    if pudding then 
+        self.turnInProgress = false
+        return 
+    end
 
-    tick.delay(function() self:enter(self.levelNumber + 1) end, 0.3)
+    tick.delay(function() 
+        self:enter(self.levelNumber + 1) 
+        self.turnInProgress = false
+    end, 0.3)
 end
 
 function GameManager:selectCard(index)
@@ -49,6 +62,8 @@ function GameManager:useCard()
     local level = self.level
     local tile = level.active
     if self.deck.targets:any(filters.equal(tile)) then
+        self.turnInProgress = true
+        self.level:save()
         self.deck:useCard(level, tile)
     else
         return
@@ -79,6 +94,8 @@ function GameManager:doTurn()
         level.player.blocking = level.player.blocking - 1
     end
 
+
+    level:push()
     tick.delay(function() GameManager:checkWin() end, 0.2)
 end
 

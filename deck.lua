@@ -22,8 +22,14 @@ function Deck:new(cards, player)
         table.insert(self.cards, card:new(count))
     end
     table.sort(self.cards, function(a, b) return cardOrder[a.id] < cardOrder[b.id] end)
+    self.stack = sequence{}
     self.active = nil
     self.targets = nil
+end
+
+function Deck:undo()
+    local card = self.stack:pop()
+    if card then card.count = card.count + 1 end
 end
 
 function Deck:selectCard(index, level)
@@ -41,6 +47,7 @@ end
 
 function Deck:useCard(level, position)
     local card = self.active
+    self.stack:push(card)
     card:use(level, position:copy())
     card.selected = false
     card.count = card.count - 1
