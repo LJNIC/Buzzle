@@ -28,6 +28,13 @@ return {
     {
       id = 14,
       type = "trap"
+    },
+    {
+      id = 37,
+      type = "player",
+      properties = {
+        ["health"] = 1
+      }
     }
   }
 }

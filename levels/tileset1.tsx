@@ -5,4 +5,9 @@
  </editorsettings>
  <image source="tileset1.png" width="160" height="128"/>
  <tile id="14" type="trap"/>
+ <tile id="37" type="player">
+  <properties>
+   <property name="health" type="int" value="1"/>
+  </properties>
+ </tile>
 </tileset>
