@@ -9,7 +9,7 @@ return {
   tilewidth = 16,
   tileheight = 16,
   nextlayerid = 3,
-  nextobjectid = 4,
+  nextobjectid = 8,
   properties = {
     ["attack"] = 1,
     ["block"] = 1,
@@ -81,6 +81,51 @@ return {
           properties = {
             ["health"] = 2
           }
+        },
+        {
+          id = 4,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 112,
+          y = 32,
+          width = 16,
+          height = 16,
+          rotation = 0,
+          gid = 48,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 5,
+          name = "",
+          type = "squar",
+          shape = "rectangle",
+          x = 128,
+          y = 32,
+          width = 16,
+          height = 16,
+          rotation = 0,
+          gid = 39,
+          visible = true,
+          properties = {
+            ["damage"] = 1,
+            ["direction"] = "left"
+          }
+        },
+        {
+          id = 6,
+          name = "",
+          type = "pudding",
+          shape = "rectangle",
+          x = 144,
+          y = 32,
+          width = 16,
+          height = 16,
+          rotation = 0,
+          gid = 28,
+          visible = true,
+          properties = {}
         }
       }
     }
