@@ -30,10 +30,22 @@ return {
       type = "trap"
     },
     {
+      id = 27,
+      type = "pudding"
+    },
+    {
       id = 37,
       type = "player",
       properties = {
         ["health"] = 1
+      }
+    },
+    {
+      id = 38,
+      type = "squar",
+      properties = {
+        ["damage"] = 1,
+        ["direction"] = "left"
       }
     }
   }
