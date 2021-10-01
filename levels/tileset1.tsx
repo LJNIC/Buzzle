@@ -6,6 +6,5 @@
  <image source="tileset1.png" width="160" height="128"/>
  <tile id="14" type="trap"/>
  <tile id="27" type="pudding"/>
- <tile id="37" type="player"/>
  <tile id="38" type="squar"/>
 </tileset>
