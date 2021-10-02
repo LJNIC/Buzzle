@@ -9,7 +9,7 @@ return {
   tilewidth = 16,
   tileheight = 16,
   nextlayerid = 3,
-  nextobjectid = 23,
+  nextobjectid = 25,
   properties = {
     ["attack"] = 1,
     ["block"] = 1,
@@ -146,20 +146,6 @@ return {
           properties = {}
         },
         {
-          id = 19,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 128,
-          y = 32,
-          width = 16,
-          height = 16,
-          rotation = 0,
-          gid = 15,
-          visible = true,
-          properties = {}
-        },
-        {
           id = 20,
           name = "",
           type = "",
@@ -198,6 +184,20 @@ return {
           height = 16,
           rotation = 0,
           gid = 28,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 24,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 128,
+          y = 48,
+          width = 16,
+          height = 16,
+          rotation = 0,
+          gid = 15,
           visible = true,
           properties = {}
         }
