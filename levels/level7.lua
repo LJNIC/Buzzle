@@ -9,7 +9,7 @@ return {
   tilewidth = 16,
   tileheight = 16,
   nextlayerid = 3,
-  nextobjectid = 27,
+  nextobjectid = 35,
   properties = {
     ["attack"] = 1,
     ["block"] = 1,
@@ -68,9 +68,9 @@ return {
       properties = {},
       objects = {
         {
-          id = 9,
+          id = 27,
           name = "",
-          type = "player",
+          type = "",
           shape = "rectangle",
           x = 64,
           y = 48,
@@ -84,9 +84,9 @@ return {
           }
         },
         {
-          id = 10,
+          id = 28,
           name = "",
-          type = "squar",
+          type = "",
           shape = "rectangle",
           x = 80,
           y = 32,
@@ -96,14 +96,13 @@ return {
           gid = 39,
           visible = true,
           properties = {
-            ["damage"] = 1,
             ["direction"] = "left"
           }
         },
         {
-          id = 11,
+          id = 29,
           name = "",
-          type = "squar",
+          type = "",
           shape = "rectangle",
           x = 96,
           y = 48,
@@ -113,26 +112,39 @@ return {
           gid = 39,
           visible = true,
           properties = {
-            ["damage"] = 1,
             ["direction"] = "down"
           }
         },
         {
-          id = 17,
+          id = 30,
           name = "",
           type = "",
           shape = "rectangle",
-          x = 96,
-          y = 64,
+          x = 128,
+          y = 48,
           width = 16,
           height = 16,
           rotation = 0,
-          gid = 48,
+          gid = 15,
           visible = true,
           properties = {}
         },
         {
-          id = 18,
+          id = 31,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 64,
+          y = 64,
+          width = 16,
+          height = 16,
+          rotation = 0,
+          gid = 15,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 32,
           name = "",
           type = "",
           shape = "rectangle",
@@ -146,37 +158,23 @@ return {
           properties = {}
         },
         {
-          id = 20,
+          id = 33,
           name = "",
           type = "",
           shape = "rectangle",
-          x = 64,
+          x = 96,
           y = 64,
           width = 16,
           height = 16,
           rotation = 0,
-          gid = 15,
+          gid = 48,
           visible = true,
           properties = {}
         },
         {
-          id = 21,
+          id = 34,
           name = "",
           type = "",
-          shape = "rectangle",
-          x = 64,
-          y = 80,
-          width = 16,
-          height = 16,
-          rotation = 0,
-          gid = 25,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 22,
-          name = "",
-          type = "pudding",
           shape = "rectangle",
           x = 128,
           y = 64,
@@ -184,20 +182,6 @@ return {
           height = 16,
           rotation = 0,
           gid = 28,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 24,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 128,
-          y = 48,
-          width = 16,
-          height = 16,
-          rotation = 0,
-          gid = 15,
           visible = true,
           properties = {}
         }
