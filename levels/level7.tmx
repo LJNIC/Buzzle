@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="14" height="7" tilewidth="16" tileheight="16" infinite="0" nextlayerid="3" nextobjectid="35">
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="14" height="7" tilewidth="16" tileheight="16" infinite="0" nextlayerid="3" nextobjectid="59">
  <editorsettings>
   <export target="level7.lua" format="lua"/>
  </editorsettings>
@@ -24,28 +24,28 @@
 51,51,51,51,51,51,41,41,41,51,51,51,51,51
 </data>
  </layer>
- <objectgroup id="2" name="objects" offsetx="0" offsety="16">
-  <object id="27" type="player" gid="38" x="64" y="48" width="16" height="16">
+ <objectgroup id="2" name="objects">
+  <object id="51" type="player" gid="38" x="64" y="64" width="16" height="16">
    <properties>
     <property name="health" type="int" value="2"/>
    </properties>
   </object>
-  <object id="28" type="squar" gid="39" x="80" y="32" width="16" height="16">
+  <object id="52" type="squar" gid="39" x="80" y="48" width="16" height="16">
    <properties>
     <property name="damage" type="int" value="1"/>
     <property name="direction" value="left"/>
    </properties>
   </object>
-  <object id="29" type="squar" gid="39" x="96" y="48" width="16" height="16">
+  <object id="53" type="squar" gid="39" x="96" y="64" width="16" height="16">
    <properties>
     <property name="damage" type="int" value="1"/>
     <property name="direction" value="down"/>
    </properties>
   </object>
-  <object id="30" gid="15" x="128" y="48" width="16" height="16"/>
-  <object id="31" gid="15" x="64" y="64" width="16" height="16"/>
-  <object id="32" gid="48" x="64" y="32" width="16" height="16"/>
-  <object id="33" gid="48" x="96" y="64" width="16" height="16"/>
-  <object id="34" type="pudding" gid="28" x="128" y="64" width="16" height="16"/>
+  <object id="54" gid="15" x="128" y="64" width="16" height="16"/>
+  <object id="55" gid="15" x="64" y="80" width="16" height="16"/>
+  <object id="56" gid="48" x="64" y="48" width="16" height="16"/>
+  <object id="57" gid="48" x="96" y="80" width="16" height="16"/>
+  <object id="58" type="pudding" gid="28" x="128" y="80" width="16" height="16"/>
  </objectgroup>
 </map>
