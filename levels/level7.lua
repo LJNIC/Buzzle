@@ -70,7 +70,7 @@ return {
         {
           id = 27,
           name = "",
-          type = "",
+          type = "player",
           shape = "rectangle",
           x = 64,
           y = 48,
@@ -86,7 +86,7 @@ return {
         {
           id = 28,
           name = "",
-          type = "",
+          type = "squar",
           shape = "rectangle",
           x = 80,
           y = 32,
@@ -96,13 +96,14 @@ return {
           gid = 39,
           visible = true,
           properties = {
+            ["damage"] = 1,
             ["direction"] = "left"
           }
         },
         {
           id = 29,
           name = "",
-          type = "",
+          type = "squar",
           shape = "rectangle",
           x = 96,
           y = 48,
@@ -112,6 +113,7 @@ return {
           gid = 39,
           visible = true,
           properties = {
+            ["damage"] = 1,
             ["direction"] = "down"
           }
         },
@@ -174,7 +176,7 @@ return {
         {
           id = 34,
           name = "",
-          type = "",
+          type = "pudding",
           shape = "rectangle",
           x = 128,
           y = 64,
