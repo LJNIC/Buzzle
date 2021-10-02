@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="14" height="7" tilewidth="16" tileheight="16" infinite="0" nextlayerid="3" nextobjectid="35">
+ <editorsettings>
+  <export target="level7.lua" format="lua"/>
+ </editorsettings>
+ <properties>
+  <property name="attack" type="int" value="1"/>
+  <property name="block" type="int" value="1"/>
+  <property name="disarm" type="int" value="1"/>
+  <property name="move1" type="int" value="1"/>
+  <property name="move2" type="int" value="1"/>
+  <property name="move3" type="int" value="1"/>
+  <property name="push" type="int" value="1"/>
+ </properties>
+ <tileset firstgid="1" source="tileset1.tsx"/>
+ <layer id="1" name="tiles" width="14" height="7">
+  <data encoding="csv">
+51,51,51,51,51,51,51,51,51,51,51,51,51,51,
+51,51,51,51,31,31,51,51,51,51,51,51,51,51,
+51,51,51,51,31,31,31,31,31,51,51,51,51,51,
+51,51,51,51,31,31,31,41,31,51,51,51,51,51,
+51,51,51,51,31,31,31,31,31,31,51,51,51,51,
+51,51,51,51,41,41,31,31,31,41,51,51,51,51,
+51,51,51,51,51,51,41,41,41,51,51,51,51,51
+</data>
+ </layer>
+ <objectgroup id="2" name="objects" offsetx="0" offsety="16">
+  <object id="27" gid="38" x="64" y="48" width="16" height="16">
+   <properties>
+    <property name="health" type="int" value="2"/>
+   </properties>
+  </object>
+  <object id="28" gid="39" x="80" y="32" width="16" height="16">
+   <properties>
+    <property name="direction" value="left"/>
+   </properties>
+  </object>
+  <object id="29" gid="39" x="96" y="48" width="16" height="16">
+   <properties>
+    <property name="direction" value="down"/>
+   </properties>
+  </object>
+  <object id="30" gid="15" x="128" y="48" width="16" height="16"/>
+  <object id="31" gid="15" x="64" y="64" width="16" height="16"/>
+  <object id="32" gid="48" x="64" y="32" width="16" height="16"/>
+  <object id="33" gid="48" x="96" y="64" width="16" height="16"/>
+  <object id="34" gid="28" x="128" y="64" width="16" height="16"/>
+ </objectgroup>
+</map>
