@@ -29,6 +29,7 @@ function Base:draw()
 end
 
 function Base:hurt(amount)
+    if not self.health then return end
     self.health = math.max(self.health - amount, 0)
     self.damaged = true
     self.damagedAmount = amount
