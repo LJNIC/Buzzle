@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="14" height="7" tilewidth="16" tileheight="16" infinite="0" nextlayerid="3" nextobjectid="13">
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="14" height="7" tilewidth="16" tileheight="16" infinite="0" nextlayerid="3" nextobjectid="15">
+ <editorsettings>
+  <export target="level8.lua" format="lua"/>
+ </editorsettings>
  <properties>
   <property name="attack" type="int" value="1"/>
   <property name="block" type="int" value="1"/>
@@ -27,12 +30,6 @@
     <property name="health" type="int" value="3"/>
    </properties>
   </object>
-  <object id="2" gid="39" x="96" y="48" width="16" height="16">
-   <properties>
-    <property name="damage" type="int" value="2"/>
-    <property name="direction" value="right"/>
-   </properties>
-  </object>
   <object id="3" gid="39" x="128" y="64" width="16" height="16">
    <properties>
     <property name="damage" type="int" value="2"/>
@@ -48,10 +45,16 @@
   <object id="5" gid="50" x="112" y="64" width="16" height="16"/>
   <object id="6" gid="49" x="128" y="48" width="16" height="16"/>
   <object id="7" gid="49" x="112" y="48" width="16" height="16"/>
-  <object id="8" gid="15" x="160" y="32" width="16" height="16"/>
   <object id="9" gid="15" x="144" y="48" width="16" height="16"/>
   <object id="10" gid="15" x="128" y="80" width="16" height="16"/>
   <object id="11" gid="25" x="128" y="96" width="16" height="16"/>
   <object id="12" gid="28" x="96" y="64" width="16" height="16"/>
+  <object id="13" gid="39" x="112" y="32" width="16" height="16">
+   <properties>
+    <property name="damage" type="int" value="2"/>
+    <property name="direction" value="down"/>
+   </properties>
+  </object>
+  <object id="14" gid="15" x="96" y="48" width="16" height="16"/>
  </objectgroup>
 </map>
